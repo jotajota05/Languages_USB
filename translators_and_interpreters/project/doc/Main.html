@@ -1,0 +1,190 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!--Rendered using the Haskell Html Library v0.2-->
+<HTML
+><HEAD
+><META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8"
+><TITLE
+>Main</TITLE
+><LINK HREF="haddock.css" REL="stylesheet" TYPE="text/css"
+><SCRIPT SRC="haddock.js" TYPE="text/javascript"
+></SCRIPT
+></HEAD
+><BODY
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD CLASS="topbar"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD
+><IMG SRC="haskell_icon.gif" WIDTH="16" HEIGHT="16" ALT=" "
+></TD
+><TD CLASS="title"
+></TD
+><TD CLASS="topbut"
+><A HREF="index.html"
+>Contents</A
+></TD
+><TD CLASS="topbut"
+><A HREF="doc-index.html"
+>Index</A
+></TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="modulebar"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD
+><FONT SIZE="6"
+>Main</FONT
+></TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="section1"
+>Description</TD
+></TR
+><TR
+><TD CLASS="doc"
+><P
+><EM
+>Programa Principal - Willy</EM
+>
+</P
+><P
+>Traductores e Interpretadores CI3725
+	 10 de octubre de 2008
+	 Equipo 7
+	 Tamara Mendt 05-38546
+	 Juan Garc&#xc3;&#xad;a 05-38207
+</P
+><P
+>Programa Principal para el analizador lexicogr&#xc3;&#xa1;fico de Willy.
+</P
+><P
+>Programa basado en el interpretador de la calculadora elaborado
+	 por el Profesor Ernesto Hern&#xc3;&#xa1;ndez-Novich <A HREF="emhn@usb.ve"
+>emhn@usb.ve</A
+>
+</P
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="section1"
+>Synopsis</TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="body"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD CLASS="decl"
+><A HREF="#v%3AgetFilename"
+>getFilename</A
+> :: [String] -&gt; IO String</TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A HREF="#v%3Amain"
+>main</A
+> :: IO ()</TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="section1"
+>Documentation</TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A NAME="v%3AgetFilename"
+></A
+><B
+>getFilename</B
+> :: [String] -&gt; IO String</TD
+></TR
+><TR
+><TD CLASS="doc"
+><PRE
+>getFilename</PRE
+><P
+>La funci&#xc3;&#xb3;n getFilename extrae el archivo de texto que va a ser
+	interpretado. En caso de que se pase como argumento por terminal,
+	este lo lee y lo retorna a la funci&#xc3;&#xb3;n llamadora, en caso contrario,
+	se despliega un prompt para que el usuario ingrese el nombre del
+	archivo que desea interpretar.
+</P
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A NAME="v%3Amain"
+></A
+><B
+>main</B
+> :: IO ()</TD
+></TR
+><TR
+><TD CLASS="doc"
+><P
+><TT
+>main</TT
+>
+   Funci&#xc3;&#xb3;n Principal, Main, del modulo Willy.
+</P
+><P
+>La funci&#xc3;&#xb3;n main se encarga de la lectura del archivo de entrada, y
+   de llamar la funci&#xc3;&#xb3;n lexer, la cual realizara el an&#xc3;&#xa1;lisis lexicogr&#xc3;&#xa1;fico
+   del mismo. Primero se piden el nombre del archivo como argumento, para 
+   abrirlo y luego proceder a realizar la lectura. En caso de error
+   se maneja la excepci&#xc3;&#xb3;n y el programa finaliza ofreciendo un mensaje
+   de error.
+</P
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="botbar"
+>Produced by <A HREF="http://www.haskell.org/haddock/"
+>Haddock</A
+> version 0.8</TD
+></TR
+></TABLE
+></BODY
+></HTML
+>

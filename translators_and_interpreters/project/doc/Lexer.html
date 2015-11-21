@@ -1,0 +1,1388 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!--Rendered using the Haskell Html Library v0.2-->
+<HTML
+><HEAD
+><META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8"
+><TITLE
+>Lexer</TITLE
+><LINK HREF="haddock.css" REL="stylesheet" TYPE="text/css"
+><SCRIPT SRC="haddock.js" TYPE="text/javascript"
+></SCRIPT
+></HEAD
+><BODY
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD CLASS="topbar"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD
+><IMG SRC="haskell_icon.gif" WIDTH="16" HEIGHT="16" ALT=" "
+></TD
+><TD CLASS="title"
+></TD
+><TD CLASS="topbut"
+><A HREF="index.html"
+>Contents</A
+></TD
+><TD CLASS="topbut"
+><A HREF="doc-index.html"
+>Index</A
+></TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="modulebar"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD
+><FONT SIZE="6"
+>Lexer</FONT
+></TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="section1"
+>Description</TD
+></TR
+><TR
+><TD CLASS="doc"
+><P
+><EM
+>Analizador Lexicogr&#xc3;&#xa1;fico para el programa Willy</EM
+>
+</P
+><P
+>Traductores e Interpretadores CI3725
+</P
+><P
+>10 de octubre de 2008
+                Grupo 7
+                Juan Garc&#xc3;&#xad;a 05-38207
+                Tamara Mendt 05-38546
+</P
+><P
+>Este m&#xc3;&#xb3;dulo est&#xc3;&#xa1; desarrollado en Alex y se bas&#xc3;&#xb3; en el Analizador
+        Lexicogr&#xc3;&#xa1;fico para el lenguaje Minilogo escrito y publicado por 
+        el profesor Ernesto Hern&#xc3;&#xa1;ndez Novich.
+</P
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="section1"
+>Synopsis</TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="body"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD CLASS="decl"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD CLASS="decl"
+><SPAN CLASS="keyword"
+>data</SPAN
+> <A HREF="#t%3AToken"
+>Token</A
+> </TD
+></TR
+><TR
+><TD CLASS="body"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD CLASS="decl"
+>= <A HREF="#v%3ATkPuntoyComa"
+>TkPuntoyComa</A
+> (Int, Int)</TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3ATkComa"
+>TkComa</A
+> (Int, Int)</TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3ATkNum"
+>TkNum</A
+> (Int, Int) Int</TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3ATkbeginworld"
+>Tkbeginworld</A
+> (Int, Int)</TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3ATkendworld"
+>Tkendworld</A
+> (Int, Int)</TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3ATkWorld"
+>TkWorld</A
+> (Int, Int)</TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3ATkWall"
+>TkWall</A
+> (Int, Int)</TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3ATkof"
+>Tkof</A
+> (Int, Int)</TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3ATkto"
+>Tkto</A
+> (Int, Int)</TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3ATkPlace"
+>TkPlace</A
+> (Int, Int)</TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3ATkgarbage"
+>Tkgarbage</A
+> (Int, Int)</TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3ATkcans"
+>Tkcans</A
+> (Int, Int)</TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3ATkin"
+>Tkin</A
+> (Int, Int)</TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3ATkstart"
+>Tkstart</A
+> (Int, Int)</TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3ATkat"
+>Tkat</A
+> (Int, Int)</TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3ATkheading"
+>Tkheading</A
+> (Int, Int)</TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3ATknorth"
+>Tknorth</A
+> (Int, Int)</TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3ATksouth"
+>Tksouth</A
+> (Int, Int)</TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3ATkeast"
+>Tkeast</A
+> (Int, Int)</TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3ATkwest"
+>Tkwest</A
+> (Int, Int)</TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3ATkbeginwork"
+>Tkbeginwork</A
+> (Int, Int)</TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3ATkon"
+>Tkon</A
+> (Int, Int)</TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3ATkendwork"
+>Tkendwork</A
+> (Int, Int)</TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3ATkif"
+>Tkif</A
+> (Int, Int)</TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3ATkthen"
+>Tkthen</A
+> (Int, Int)</TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3ATkelse"
+>Tkelse</A
+> (Int, Int)</TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3ATkrepeat"
+>Tkrepeat</A
+> (Int, Int)</TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3ATktimes"
+>Tktimes</A
+> (Int, Int)</TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3ATkwhile"
+>Tkwhile</A
+> (Int, Int)</TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3ATkdo"
+>Tkdo</A
+> (Int, Int)</TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3ATkbegin"
+>Tkbegin</A
+> (Int, Int)</TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3ATkend"
+>Tkend</A
+> (Int, Int)</TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3ATkmove"
+>Tkmove</A
+> (Int, Int)</TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3ATkturnleft"
+>Tkturnleft</A
+> (Int, Int)</TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3ATkpicktrash"
+>Tkpicktrash</A
+> (Int, Int)</TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3ATkdroptrash"
+>Tkdroptrash</A
+> (Int, Int)</TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3ATkshutdown"
+>Tkshutdown</A
+> (Int, Int)</TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3ATkfrontisclear"
+>Tkfrontisclear</A
+> (Int, Int)</TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3ATkleftisclear"
+>Tkleftisclear</A
+> (Int, Int)</TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3ATkrightisclear"
+>Tkrightisclear</A
+> (Int, Int)</TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3ATklookingnorth"
+>Tklookingnorth</A
+> (Int, Int)</TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3ATklookingeast"
+>Tklookingeast</A
+> (Int, Int)</TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3ATklookingwest"
+>Tklookingwest</A
+> (Int, Int)</TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3ATklookingsouth"
+>Tklookingsouth</A
+> (Int, Int)</TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3ATkfoundtrash"
+>Tkfoundtrash</A
+> (Int, Int)</TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3ATkcarryingtrash"
+>Tkcarryingtrash</A
+> (Int, Int)</TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3ATknot"
+>Tknot</A
+> (Int, Int)</TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3ATkand"
+>Tkand</A
+> (Int, Int)</TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3ATkor"
+>Tkor</A
+> (Int, Int)</TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3ATkdefineinstruction"
+>Tkdefineinstruction</A
+> (Int, Int)</TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3ATkas"
+>Tkas</A
+> (Int, Int)</TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3ATkId"
+>TkId</A
+> (Int, Int) String</TD
+></TR
+></TABLE
+></TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A HREF="#v%3AprocessInput"
+>processInput</A
+> :: String -&gt; ([<A HREF="Lexer.html#t%3AToken"
+>Token</A
+>], [String])</TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A HREF="#v%3Alyc"
+>lyc</A
+> :: AlexPosn -&gt; (Int, Int)</TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A HREF="#v%3Alexer"
+>lexer</A
+> :: String -&gt; [<A HREF="Lexer.html#t%3AToken"
+>Token</A
+>]</TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="section1"
+>Documentation</TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><SPAN CLASS="keyword"
+>data</SPAN
+> <A NAME="t%3AToken"
+></A
+><B
+>Token</B
+> </TD
+></TR
+><TR
+><TD CLASS="body"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD CLASS="ndoc"
+>El tipo de datos <TT
+>Token</TT
+> representa los diferentes tokens
+    producidos por el Analizador Lexicogr&#xc3;&#xa1;fico. Cada token va
+    acompa&#xc3;&#xb1;ado de una tupla de enteros, cuyos componentes 
+    denotan la l&#xc3;&#xad;nea y columna, respectivamente, en la cual se
+    encontr&#xc3;&#xb3; el token dentro del archivo procesado. Para aquellos
+    tokens que lo ameriten, se agrega el lexema convertido al tipo
+    deseado.
+</TD
+></TR
+><TR
+><TD CLASS="section4"
+>Constructors</TD
+></TR
+><TR
+><TD CLASS="body"
+><TABLE CLASS="vanilla" CELLSPACING="1" CELLPADDING="0"
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ATkPuntoyComa"
+></A
+><B
+>TkPuntoyComa</B
+> (Int, Int)</TD
+><TD CLASS="rdoc"
+>Separador de instrucciones en un bloque
+</TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ATkComa"
+></A
+><B
+>TkComa</B
+> (Int, Int)</TD
+><TD CLASS="rdoc"
+>Separador de atributos en un Place
+</TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ATkNum"
+></A
+><B
+>TkNum</B
+> (Int, Int) Int</TD
+><TD CLASS="rdoc"
+>N&#xc3;&#xba;mero entero
+</TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ATkbeginworld"
+></A
+><B
+>Tkbeginworld</B
+> (Int, Int)</TD
+><TD CLASS="rdoc"
+>Palabra reservada <TT
+>beginworld</TT
+>.
+</TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ATkendworld"
+></A
+><B
+>Tkendworld</B
+> (Int, Int)</TD
+><TD CLASS="rdoc"
+>Palabra reservada <TT
+>endworld</TT
+>.
+</TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ATkWorld"
+></A
+><B
+>TkWorld</B
+> (Int, Int)</TD
+><TD CLASS="rdoc"
+>Instrucci&#xc3;&#xb3;n de creaci&#xc3;&#xb3;n de mundo <TT
+>World</TT
+>.
+</TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ATkWall"
+></A
+><B
+>TkWall</B
+> (Int, Int)</TD
+><TD CLASS="rdoc"
+>Instrucci&#xc3;&#xb3;n de construcci&#xc3;&#xb3;n de paredes <TT
+>Wall</TT
+>.
+</TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ATkof"
+></A
+><B
+>Tkof</B
+> (Int, Int)</TD
+><TD CLASS="rdoc"
+>Palabra reservada <TT
+>of</TT
+>.
+</TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ATkto"
+></A
+><B
+>Tkto</B
+> (Int, Int)</TD
+><TD CLASS="rdoc"
+>Palabra reservada <TT
+>to</TT
+>.
+</TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ATkPlace"
+></A
+><B
+>TkPlace</B
+> (Int, Int)</TD
+><TD CLASS="rdoc"
+>Instrucci&#xc3;&#xb3;n para colocar pipote de basura <TT
+>Place</TT
+>
+</TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ATkgarbage"
+></A
+><B
+>Tkgarbage</B
+> (Int, Int)</TD
+><TD CLASS="rdoc"
+>Palabra reservada <TT
+>garbage</TT
+>
+</TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ATkcans"
+></A
+><B
+>Tkcans</B
+> (Int, Int)</TD
+><TD CLASS="rdoc"
+>Palabra reservada <TT
+>cans</TT
+>
+</TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ATkin"
+></A
+><B
+>Tkin</B
+> (Int, Int)</TD
+><TD CLASS="rdoc"
+>Palabra reservada <TT
+>in</TT
+>
+</TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ATkstart"
+></A
+><B
+>Tkstart</B
+> (Int, Int)</TD
+><TD CLASS="rdoc"
+>Instrucci&#xc3;&#xb3;n para determinar posici&#xc3;&#xb3;n inicial de Willy <TT
+>Start</TT
+>
+</TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ATkat"
+></A
+><B
+>Tkat</B
+> (Int, Int)</TD
+><TD CLASS="rdoc"
+>Palabra reservada <TT
+>at</TT
+>
+</TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ATkheading"
+></A
+><B
+>Tkheading</B
+> (Int, Int)</TD
+><TD CLASS="rdoc"
+>Palabra reservada <TT
+>heading</TT
+>
+</TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ATknorth"
+></A
+><B
+>Tknorth</B
+> (Int, Int)</TD
+><TD CLASS="rdoc"
+>Direcci&#xc3;&#xb3;n norte <TT
+>north</TT
+>
+</TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ATksouth"
+></A
+><B
+>Tksouth</B
+> (Int, Int)</TD
+><TD CLASS="rdoc"
+>Direcci&#xc3;&#xb3;n sur <TT
+>south</TT
+>
+</TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ATkeast"
+></A
+><B
+>Tkeast</B
+> (Int, Int)</TD
+><TD CLASS="rdoc"
+>Direcci&#xc3;&#xb3;n este <TT
+>east</TT
+>
+</TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ATkwest"
+></A
+><B
+>Tkwest</B
+> (Int, Int)</TD
+><TD CLASS="rdoc"
+>Direcci&#xc3;&#xb3;n oeste <TT
+>west</TT
+>
+</TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ATkbeginwork"
+></A
+><B
+>Tkbeginwork</B
+> (Int, Int)</TD
+><TD CLASS="rdoc"
+>Instrucci&#xc3;&#xb3;n que indica el comienzo de un bloque de instrucciones
+ ^ para Willy <TT
+>begin-work</TT
+>
+</TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ATkon"
+></A
+><B
+>Tkon</B
+> (Int, Int)</TD
+><TD CLASS="rdoc"
+>Palabra reservada <TT
+>on</TT
+>
+</TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ATkendwork"
+></A
+><B
+>Tkendwork</B
+> (Int, Int)</TD
+><TD CLASS="rdoc"
+>Intrucci&#xc3;&#xb3;n que indica el final de un bloque de instrucciones para
+ ^ Willy <TT
+>end-work</TT
+>
+</TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ATkif"
+></A
+><B
+>Tkif</B
+> (Int, Int)</TD
+><TD CLASS="rdoc"
+>Instrucci&#xc3;&#xb3;n condicional <TT
+>if</TT
+>
+</TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ATkthen"
+></A
+><B
+>Tkthen</B
+> (Int, Int)</TD
+><TD CLASS="rdoc"
+>Instrucci&#xc3;&#xb3;n condicional <TT
+>then</TT
+>
+</TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ATkelse"
+></A
+><B
+>Tkelse</B
+> (Int, Int)</TD
+><TD CLASS="rdoc"
+>Instrucci&#xc3;&#xb3;n condicional <TT
+>else</TT
+>
+</TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ATkrepeat"
+></A
+><B
+>Tkrepeat</B
+> (Int, Int)</TD
+><TD CLASS="rdoc"
+>Iteraci&#xc3;&#xb3;n acotada <TT
+>repeat</TT
+>
+</TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ATktimes"
+></A
+><B
+>Tktimes</B
+> (Int, Int)</TD
+><TD CLASS="rdoc"
+>Iteraci&#xc3;&#xb3;n acotada <TT
+>times</TT
+>
+</TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ATkwhile"
+></A
+><B
+>Tkwhile</B
+> (Int, Int)</TD
+><TD CLASS="rdoc"
+>Iteraci&#xc3;&#xb3;n abierta <TT
+>while</TT
+>
+</TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ATkdo"
+></A
+><B
+>Tkdo</B
+> (Int, Int)</TD
+><TD CLASS="rdoc"
+>Palabra reservada <TT
+>do</TT
+>
+</TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ATkbegin"
+></A
+><B
+>Tkbegin</B
+> (Int, Int)</TD
+><TD CLASS="rdoc"
+>Instrucci&#xc3;&#xb3;n que indica el comienzo de una instrucci&#xc3;&#xb3;n compuesta <TT
+>begin</TT
+>
+</TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ATkend"
+></A
+><B
+>Tkend</B
+> (Int, Int)</TD
+><TD CLASS="rdoc"
+>Instrucci&#xc3;&#xb3;n que indica el final de una instrucci&#xc3;&#xb3;n compuesta <TT
+>end</TT
+>
+</TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ATkmove"
+></A
+><B
+>Tkmove</B
+> (Int, Int)</TD
+><TD CLASS="rdoc"
+>Instrucci&#xc3;&#xb3;n para Willy de moverse hacia la direcci&#xc3;&#xb3;n a la que se 
+ ^ encuentra dirigido <TT
+>move</TT
+>
+</TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ATkturnleft"
+></A
+><B
+>Tkturnleft</B
+> (Int, Int)</TD
+><TD CLASS="rdoc"
+>Instrucci&#xc3;&#xb3;n de girar a la izquierda <TT
+>turnleft</TT
+>
+</TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ATkpicktrash"
+></A
+><B
+>Tkpicktrash</B
+> (Int, Int)</TD
+><TD CLASS="rdoc"
+>Instrucci&#xc3;&#xb3;n de recojer pote de basura <TT
+>picktrash</TT
+>
+</TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ATkdroptrash"
+></A
+><B
+>Tkdroptrash</B
+> (Int, Int)</TD
+><TD CLASS="rdoc"
+>Instrucci&#xc3;&#xb3;n de soltar pote de basura <TT
+>droptrash</TT
+>
+</TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ATkshutdown"
+></A
+><B
+>Tkshutdown</B
+> (Int, Int)</TD
+><TD CLASS="rdoc"
+>Instrucci&#xc3;&#xb3;n para apagar a Willy <TT
+>shutdown</TT
+>
+</TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ATkfrontisclear"
+></A
+><B
+>Tkfrontisclear</B
+> (Int, Int)</TD
+><TD CLASS="rdoc"
+>Expresi&#xc3;&#xb3;n booleana que es true si Willy puede avanzar hacia
+ ^ el frente <TT
+>front-is-clear</TT
+>
+</TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ATkleftisclear"
+></A
+><B
+>Tkleftisclear</B
+> (Int, Int)</TD
+><TD CLASS="rdoc"
+>Expresi&#xc3;&#xb3;n booleana que es true si Willy puede avanzar hacia
+ ^ la izquierda <TT
+>left-is-clear</TT
+> 
+</TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ATkrightisclear"
+></A
+><B
+>Tkrightisclear</B
+> (Int, Int)</TD
+><TD CLASS="rdoc"
+>Expresi&#xc3;&#xb3;n booleana que es true si Willy puede avanzar hacia
+ ^ la derecha <TT
+>right-is-clear</TT
+> 
+</TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ATklookingnorth"
+></A
+><B
+>Tklookingnorth</B
+> (Int, Int)</TD
+><TD CLASS="rdoc"
+>Expresi&#xc3;&#xb3;n booleana que es true si Willy est&#xc3;&#xa1; dirigido hacia
+ ^ el norte <TT
+>looking-north</TT
+>
+</TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ATklookingeast"
+></A
+><B
+>Tklookingeast</B
+> (Int, Int)</TD
+><TD CLASS="rdoc"
+>Expresi&#xc3;&#xb3;n booleana que es true si Willy est&#xc3;&#xa1; dirigido hacia
+ ^ el este <TT
+>looking-east</TT
+>
+</TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ATklookingwest"
+></A
+><B
+>Tklookingwest</B
+> (Int, Int)</TD
+><TD CLASS="rdoc"
+>Expresi&#xc3;&#xb3;n booleana que es true si Willy est&#xc3;&#xa1; dirigido hacia
+ ^ el oeste <TT
+>looking-west</TT
+> 
+</TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ATklookingsouth"
+></A
+><B
+>Tklookingsouth</B
+> (Int, Int)</TD
+><TD CLASS="rdoc"
+>Expresi&#xc3;&#xb3;n booleana que es true si Willy est&#xc3;&#xa1; dirigido hacia
+ ^ el sur <TT
+>looking-south</TT
+> 
+</TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ATkfoundtrash"
+></A
+><B
+>Tkfoundtrash</B
+> (Int, Int)</TD
+><TD CLASS="rdoc"
+>Expresi&#xc3;&#xb3;n booleana que es true si Willy est&#xc3;&#xa1; en una posici&#xc3;&#xb3;n
+ ^ con al menos un pipote de basura <TT
+>found-trash</TT
+>
+</TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ATkcarryingtrash"
+></A
+><B
+>Tkcarryingtrash</B
+> (Int, Int)</TD
+><TD CLASS="rdoc"
+>Expresi&#xc3;&#xb3;n booleana que es true si Willy lleva al menos un
+ ^ pipote de basura en su contenedor <TT
+>carrying-trash</TT
+>
+</TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ATknot"
+></A
+><B
+>Tknot</B
+> (Int, Int)</TD
+><TD CLASS="rdoc"
+>Operador l&#xc3;&#xb3;gico negado <TT
+>not</TT
+>
+</TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ATkand"
+></A
+><B
+>Tkand</B
+> (Int, Int)</TD
+><TD CLASS="rdoc"
+>Operador l&#xc3;&#xb3;gico y <TT
+>and</TT
+>
+</TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ATkor"
+></A
+><B
+>Tkor</B
+> (Int, Int)</TD
+><TD CLASS="rdoc"
+>Operador l&#xc3;&#xb3;gico o <TT
+>or</TT
+>
+</TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ATkdefineinstruction"
+></A
+><B
+>Tkdefineinstruction</B
+> (Int, Int)</TD
+><TD CLASS="rdoc"
+>Definici&#xc3;&#xb3;n de procedimiento <TT
+>define-instruction</TT
+>
+</TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ATkas"
+></A
+><B
+>Tkas</B
+> (Int, Int)</TD
+><TD CLASS="rdoc"
+>Palabra reservada <TT
+>as</TT
+>
+</TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ATkId"
+></A
+><B
+>TkId</B
+> (Int, Int) String</TD
+><TD CLASS="rdoc"
+>Identificador alfanum&#xc3;&#xa9;rico
+</TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="section4"
+><IMG SRC="minus.gif" CLASS="coll" ONCLICK="toggle(this,'i:Token')" ALT="show/hide"
+> Instances</TD
+></TR
+><TR
+><TD CLASS="body"
+><DIV ID="i:Token" STYLE="display:block;"
+><TABLE CLASS="vanilla" CELLSPACING="1" CELLPADDING="0"
+><TR
+><TD CLASS="decl"
+>Eq <A HREF="Lexer.html#t%3AToken"
+>Token</A
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+>Show <A HREF="Lexer.html#t%3AToken"
+>Token</A
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A NAME="v%3AprocessInput"
+></A
+><B
+>processInput</B
+></TD
+></TR
+><TR
+><TD CLASS="body"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD CLASS="arg"
+>:: String</TD
+><TD CLASS="rdoc"
+>Cadena de caracteres donde se desea reconocer tokens.
+</TD
+></TR
+><TR
+><TD CLASS="arg"
+>-&gt; ([<A HREF="Lexer.html#t%3AToken"
+>Token</A
+>], [String])</TD
+><TD CLASS="rdoc"
+>Tupla de 2 cadenas de caracteres: 
+ ^ La primera cadena contiene los tokens identificados.
+ ^ La segunda cadena contiene aquellos elementos que no son tokens (o errores de
+ ^ sintaxis)
+</TD
+></TR
+><TR
+><TD CLASS="ndoc" COLSPAN="2"
+><P
+>La funci&#xc3;&#xb3;n <TT
+>processInput</TT
+> recibe como &#xc3;&#xba;nico argumento un String, el mismo que la funci&#xc3;&#xb3;n <TT
+>lexer</TT
+>.
+    Crea 2 cadenas de String, una que estar&#xc3;&#xa1; conformada por los tokens procesados y la otra por los
+    caracteres que no se pueden identificar como tokens (errores) hallados. Para lograr esto utiliza
+    la funci&#xc3;&#xb3;n auxiliar &#xc2;&#xb4;go&#xc2;&#xb4;. 
+</P
+><P
+>La funci&#xc3;&#xb3;n go es invocada utilizando la posici&#xc3;&#xb3;n inicial del
+    archivo con la cadena completa, y una tupla con dos listas
+    vac&#xc3;&#xad;as, indicando el estado inicial: no hemos reconocido ning&#xc3;&#xba;n
+    token, no hemos encontrado ning&#xc3;&#xba;n error.
+</P
+><P
+>En cada paso de la funci&#xc3;&#xb3;n go se utiliza alexScan sobre lo que 
+    no se ha procesado de la cadena de entrada y pueden ocurrir cuatro
+    casos:
+</P
+><P
+>1) Se acaba el string (AlexEOF). En este caso s&#xc3;&#xb3;lo se retorna la tupla
+       con los tokens reconocidos y los errores encontrados.
+    2) Se encuentra un caracter que puede ser ignorado. En este caso se llama
+       recursivamente a la funci&#xc3;&#xb3;n go utilizando los mismos tokens y errores
+       hallados hasta ese momento.
+    3) Se encuentra un token v&#xc3;&#xa1;lido. En este caso hay que retornar una tupla 
+       construida de la siguiente manera: 
+          - se ejecuta la acci&#xc3;&#xb3;n sobre el segmento de cadena de entrada que
+            corresponde al lexema.
+          - se invoca recursivamente a go con lo que queda de la cadena de
+            entrada.
+          - se coloca el token al principio de la lista de tokens de la tupla
+            y se preserva la misma lista de errores.
+    4) Se encuentra un caracter ilegal, que no corresponde con alg&#xc3;&#xba;n token. En
+       este caso hay que retornar una tupla construida de la siguiente forma:
+          - se invoca recursivamente a &#xc2;&#xb4;go&#xc2;&#xb4; con el resto de la cadena de entrada
+            para ver si se consiguen m&#xc3;&#xa1;s errores o tokens. Para no perder la
+            posici&#xc3;&#xb3;n que se tiene en la cadena de entrada, se usa la funci&#xc3;&#xb3;n
+            alexMove, que convierte el AlexPosition anterior en uno actualizado.
+          - se prepara un mensaje de error que incluye el caracter que produjo
+            el error y la posici&#xc3;&#xb3;n del mismo. De esto se encarga la funci&#xc3;&#xb3;n
+            auxiliar local addError.
+</P
+></TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A NAME="v%3Alyc"
+></A
+><B
+>lyc</B
+> :: AlexPosn -&gt; (Int, Int)</TD
+></TR
+><TR
+><TD CLASS="doc"
+>Al final, cada token que se muestra va acompa&#xc3;&#xb1;ado de la l&#xc3;&#xad;nea y la columna donde fue reconocido.
+    Esto se puede lograr gracias al uso del wrapper posn que genera el desplazamiento absoluto de
+    cada token dentro del archivo. La funci&#xc3;&#xb3;n <TT
+>lyc</TT
+> (<A HREF="linea y columna.html"
+>linea y columna</A
+>) es la que extrae la l&#xc3;&#xad;nea y la
+    columna de los tokens.
+</TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A NAME="v%3Alexer"
+></A
+><B
+>lexer</B
+></TD
+></TR
+><TR
+><TD CLASS="body"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD CLASS="arg"
+>:: String</TD
+><TD CLASS="rdoc"
+>Cadena de caracteres el archivo que se va a recorrer para procesar tokens.
+</TD
+></TR
+><TR
+><TD CLASS="arg"
+>-&gt; [<A HREF="Lexer.html#t%3AToken"
+>Token</A
+>]</TD
+><TD CLASS="rdoc"
+>Lista resultante de tokens.
+</TD
+></TR
+><TR
+><TD CLASS="ndoc" COLSPAN="2"
+>La funci&#xc3;&#xb3;n <TT
+>lexer</TT
+> encapsula el uso del Analizador Lexicogr&#xc3;&#xa1;fico
+    Recibe como &#xc3;&#xba;nico argumento un String que, en teor&#xc3;&#xad;a, ha sido le&#xc3;&#xad;do
+    desde un archivo. A partir del String produce una lista de tokens
+    a medida que los va procesando. 
+      - Si no consigue errores, retorna la lista de tokens reconocidos
+      - Si consigue uno o m&#xc3;&#xa1;s errores lexicogr&#xc3;&#xa1;ficos, reporta en la pantalla los errores encontrados
+        y el programa termina su ejecuci&#xc3;&#xb3;n sin mostrar ninguno de los tokens reconocidos.
+</TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="botbar"
+>Produced by <A HREF="http://www.haskell.org/haddock/"
+>Haddock</A
+> version 0.8</TD
+></TR
+></TABLE
+></BODY
+></HTML
+>

@@ -1,0 +1,30 @@
+begin-world mundo 
+
+World 15 15 
+
+Start at 5 6 heading west
+
+Wall north of 5 3 to 5 8
+
+Place 5 garbage cans in 3 3, 7 garbage cans in 1 9
+
+end-world
+
+define-instruction proceso as turnleft
+
+begin-work on mundo
+
+begin
+
+while front-is-clear do turnleft;
+
+repeat 4 times move;
+
+proceso
+
+end
+
+end-work
+
+define-instruction proc as move
+

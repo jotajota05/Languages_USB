@@ -1,0 +1,1912 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!--Rendered using the Haskell Html Library v0.2-->
+<HTML
+><HEAD
+><META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8"
+><TITLE
+>Main</TITLE
+><LINK HREF="haddock.css" REL="stylesheet" TYPE="text/css"
+><SCRIPT SRC="haddock.js" TYPE="text/javascript"
+></SCRIPT
+></HEAD
+><BODY
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD CLASS="topbar"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD
+><IMG SRC="haskell_icon.gif" WIDTH="16" HEIGHT="16" ALT=" "
+></TD
+><TD CLASS="title"
+></TD
+><TD CLASS="topbut"
+><A HREF="index.html"
+>Contents</A
+></TD
+><TD CLASS="topbut"
+><A HREF="doc-index.html"
+>Index</A
+></TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="modulebar"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD
+><FONT SIZE="6"
+>Main</FONT
+></TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="section1"
+>Synopsis</TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="body"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD CLASS="decl"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD CLASS="decl"
+><SPAN CLASS="keyword"
+>data</SPAN
+> <A HREF="#t%3AValue"
+>Value</A
+> </TD
+></TR
+><TR
+><TD CLASS="body"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD CLASS="decl"
+>= <A HREF="#v%3AI"
+>I</A
+> Int</TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3AB"
+>B</A
+> Bool</TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3AF"
+>F</A
+> Float</TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3AC"
+>C</A
+> Char</TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3ASt"
+>St</A
+> String</TD
+></TR
+></TABLE
+></TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD CLASS="decl"
+><SPAN CLASS="keyword"
+>data</SPAN
+> <A HREF="#t%3ATerm"
+>Term</A
+> </TD
+></TR
+><TR
+><TD CLASS="body"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD CLASS="decl"
+>= <A HREF="#v%3AConst"
+>Const</A
+> <A HREF="Main.html#t%3AValue"
+>Value</A
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3AVar"
+>Var</A
+> String</TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3AFun"
+>Fun</A
+> String [<A HREF="Main.html#t%3ATerm"
+>Term</A
+>]</TD
+></TR
+></TABLE
+></TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><SPAN CLASS="keyword"
+>type</SPAN
+> <A HREF="#t%3AAtom"
+>Atom</A
+> = (String, [<A HREF="Main.html#t%3ATerm"
+>Term</A
+>])</TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><SPAN CLASS="keyword"
+>type</SPAN
+> <A HREF="#t%3ATail"
+>Tail</A
+> = [<A HREF="Main.html#t%3AAtom"
+>Atom</A
+>]</TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><SPAN CLASS="keyword"
+>data</SPAN
+> <A HREF="#t%3AQuestion"
+>Question</A
+>  = <A HREF="#v%3AQ"
+>Q</A
+> <A HREF="Main.html#t%3ATail"
+>Tail</A
+></TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD CLASS="decl"
+><SPAN CLASS="keyword"
+>data</SPAN
+> <A HREF="#t%3ADefinite"
+>Definite</A
+> </TD
+></TR
+><TR
+><TD CLASS="body"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD CLASS="decl"
+>= <A HREF="#v%3AFact"
+>Fact</A
+> <A HREF="Main.html#t%3AAtom"
+>Atom</A
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3ARule"
+>Rule</A
+> <A HREF="Main.html#t%3AAtom"
+>Atom</A
+> <A HREF="Main.html#t%3ATail"
+>Tail</A
+></TD
+></TR
+></TABLE
+></TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><SPAN CLASS="keyword"
+>data</SPAN
+> <A HREF="#t%3AProgram"
+>Program</A
+>  = <A HREF="#v%3AProlog"
+>Prolog</A
+> [<A HREF="Main.html#t%3ADefinite"
+>Definite</A
+>]</TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD CLASS="decl"
+><SPAN CLASS="keyword"
+>data</SPAN
+> <A HREF="#t%3ASubs"
+>Subs</A
+> </TD
+></TR
+><TR
+><TD CLASS="body"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD CLASS="decl"
+>= <A HREF="#v%3AS"
+>S</A
+> [(<A HREF="Main.html#t%3ATerm"
+>Term</A
+>, <A HREF="Main.html#t%3ATerm"
+>Term</A
+>)]</TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3AE"
+>E</A
+> String</TD
+></TR
+></TABLE
+></TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A HREF="#v%3Amult_sustitucion"
+>mult_sustitucion</A
+> :: <A HREF="Main.html#t%3ASubs"
+>Subs</A
+> -&gt; [<A HREF="Main.html#t%3AAtom"
+>Atom</A
+>] -&gt; [<A HREF="Main.html#t%3AAtom"
+>Atom</A
+>]</TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A HREF="#v%3Asustitucion"
+>sustitucion</A
+> :: <A HREF="Main.html#t%3ASubs"
+>Subs</A
+> -&gt; <A HREF="Main.html#t%3AAtom"
+>Atom</A
+> -&gt; <A HREF="Main.html#t%3AAtom"
+>Atom</A
+></TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A HREF="#v%3Asustit"
+>sustit</A
+> :: <A HREF="Main.html#t%3ASubs"
+>Subs</A
+> -&gt; <A HREF="Main.html#t%3ATerm"
+>Term</A
+> -&gt; <A HREF="Main.html#t%3ATerm"
+>Term</A
+></TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A HREF="#v%3AisVar"
+>isVar</A
+> :: <A HREF="Main.html#t%3ATerm"
+>Term</A
+> -&gt; Bool</TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A HREF="#v%3Arobinson"
+>robinson</A
+> :: <A HREF="Main.html#t%3AAtom"
+>Atom</A
+> -&gt; <A HREF="Main.html#t%3AAtom"
+>Atom</A
+> -&gt; <A HREF="Main.html#t%3ASubs"
+>Subs</A
+></TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A HREF="#v%3Apares"
+>pares</A
+> :: [<A HREF="Main.html#t%3ATerm"
+>Term</A
+>] -&gt; [<A HREF="Main.html#t%3ATerm"
+>Term</A
+>] -&gt; [(<A HREF="Main.html#t%3ATerm"
+>Term</A
+>, <A HREF="Main.html#t%3ATerm"
+>Term</A
+>)]</TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A HREF="#v%3Aalan"
+>alan</A
+> :: [(<A HREF="Main.html#t%3ATerm"
+>Term</A
+>, <A HREF="Main.html#t%3ATerm"
+>Term</A
+>)] -&gt; <A HREF="Main.html#t%3ASubs"
+>Subs</A
+></TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A HREF="#v%3AsustituirPar"
+>sustituirPar</A
+> :: <A HREF="Main.html#t%3ASubs"
+>Subs</A
+> -&gt; (<A HREF="Main.html#t%3ATerm"
+>Term</A
+>, <A HREF="Main.html#t%3ATerm"
+>Term</A
+>) -&gt; (<A HREF="Main.html#t%3ATerm"
+>Term</A
+>, <A HREF="Main.html#t%3ATerm"
+>Term</A
+>)</TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A HREF="#v%3Acatsub"
+>catsub</A
+> :: <A HREF="Main.html#t%3ASubs"
+>Subs</A
+> -&gt; <A HREF="Main.html#t%3ASubs"
+>Subs</A
+> -&gt; <A HREF="Main.html#t%3ASubs"
+>Subs</A
+></TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A HREF="#v%3Aoccurs_check"
+>occurs_check</A
+> :: <A HREF="Main.html#t%3ATerm"
+>Term</A
+> -&gt; <A HREF="Main.html#t%3ATerm"
+>Term</A
+> -&gt; Bool</TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A HREF="#v%3Apertenece"
+>pertenece</A
+> :: <A HREF="Main.html#t%3ATerm"
+>Term</A
+> -&gt; [<A HREF="Main.html#t%3ATerm"
+>Term</A
+>] -&gt; Bool</TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A HREF="#v%3Aresolucion"
+>resolucion</A
+> :: <A HREF="Main.html#t%3AQuestion"
+>Question</A
+> -&gt; <A HREF="Main.html#t%3AProgram"
+>Program</A
+> -&gt; <A HREF="Main.html#t%3ASubs"
+>Subs</A
+></TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A HREF="#v%3AclauseUni"
+>clauseUni</A
+> :: [<A HREF="Main.html#t%3ADefinite"
+>Definite</A
+>] -&gt; <A HREF="Main.html#t%3AAtom"
+>Atom</A
+> -&gt; <A HREF="Main.html#t%3ADefinite"
+>Definite</A
+></TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A HREF="#v%3AsubsToList"
+>subsToList</A
+> :: <A HREF="Main.html#t%3ASubs"
+>Subs</A
+> -&gt; [(<A HREF="Main.html#t%3ATerm"
+>Term</A
+>, <A HREF="Main.html#t%3ATerm"
+>Term</A
+>)]</TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A HREF="#v%3AcatchAtom"
+>catchAtom</A
+> :: <A HREF="Main.html#t%3ADefinite"
+>Definite</A
+> -&gt; <A HREF="Main.html#t%3AAtom"
+>Atom</A
+></TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A HREF="#v%3AcatchTail"
+>catchTail</A
+> :: <A HREF="Main.html#t%3ADefinite"
+>Definite</A
+> -&gt; <A HREF="Main.html#t%3ATail"
+>Tail</A
+></TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A HREF="#v%3AcatchError"
+>catchError</A
+> :: <A HREF="Main.html#t%3ASubs"
+>Subs</A
+> -&gt; Bool</TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A HREF="#v%3Amain"
+>main</A
+> :: IO ()</TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="section1"
+>Documentation</TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><SPAN CLASS="keyword"
+>data</SPAN
+> <A NAME="t%3AValue"
+></A
+><B
+>Value</B
+> </TD
+></TR
+><TR
+><TD CLASS="body"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD CLASS="ndoc"
+><P
+>Tipo <TT
+>Value</TT
+>
+</P
+><P
+>Descripcion: Este tipo de dato representa el conjunto de dominio de los terminos que son Constantes.
+</P
+></TD
+></TR
+><TR
+><TD CLASS="section4"
+>Constructors</TD
+></TR
+><TR
+><TD CLASS="body"
+><TABLE CLASS="vanilla" CELLSPACING="1" CELLPADDING="0"
+><TR
+><TD CLASS="arg"
+><A NAME="v%3AI"
+></A
+><B
+>I</B
+> Int</TD
+><TD CLASS="rdoc"
+></TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3AB"
+></A
+><B
+>B</B
+> Bool</TD
+><TD CLASS="rdoc"
+></TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3AF"
+></A
+><B
+>F</B
+> Float</TD
+><TD CLASS="rdoc"
+></TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3AC"
+></A
+><B
+>C</B
+> Char</TD
+><TD CLASS="rdoc"
+></TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ASt"
+></A
+><B
+>St</B
+> String</TD
+><TD CLASS="rdoc"
+></TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="section4"
+><IMG SRC="minus.gif" CLASS="coll" ONCLICK="toggle(this,'i:Value')" ALT="show/hide"
+> Instances</TD
+></TR
+><TR
+><TD CLASS="body"
+><DIV ID="i:Value" STYLE="display:block;"
+><TABLE CLASS="vanilla" CELLSPACING="1" CELLPADDING="0"
+><TR
+><TD CLASS="decl"
+>Eq <A HREF="Main.html#t%3AValue"
+>Value</A
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+>Eq <A HREF="Main.html#t%3AValue"
+>Value</A
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+>Show <A HREF="Main.html#t%3AValue"
+>Value</A
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+>Show <A HREF="Main.html#t%3AValue"
+>Value</A
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><SPAN CLASS="keyword"
+>data</SPAN
+> <A NAME="t%3ATerm"
+></A
+><B
+>Term</B
+> </TD
+></TR
+><TR
+><TD CLASS="body"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD CLASS="ndoc"
+><P
+>Tipo <TT
+>Term</TT
+>
+</P
+><P
+>Descripcion: Este tipo de dato repesenta los terminos de un Atomo, pueden ser Constantes, Variables o Funciones.
+</P
+></TD
+></TR
+><TR
+><TD CLASS="section4"
+>Constructors</TD
+></TR
+><TR
+><TD CLASS="body"
+><TABLE CLASS="vanilla" CELLSPACING="1" CELLPADDING="0"
+><TR
+><TD CLASS="arg"
+><A NAME="v%3AConst"
+></A
+><B
+>Const</B
+> <A HREF="Main.html#t%3AValue"
+>Value</A
+></TD
+><TD CLASS="rdoc"
+></TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3AVar"
+></A
+><B
+>Var</B
+> String</TD
+><TD CLASS="rdoc"
+></TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3AFun"
+></A
+><B
+>Fun</B
+> String [<A HREF="Main.html#t%3ATerm"
+>Term</A
+>]</TD
+><TD CLASS="rdoc"
+></TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="section4"
+><IMG SRC="minus.gif" CLASS="coll" ONCLICK="toggle(this,'i:Term')" ALT="show/hide"
+> Instances</TD
+></TR
+><TR
+><TD CLASS="body"
+><DIV ID="i:Term" STYLE="display:block;"
+><TABLE CLASS="vanilla" CELLSPACING="1" CELLPADDING="0"
+><TR
+><TD CLASS="decl"
+>Eq <A HREF="Main.html#t%3ATerm"
+>Term</A
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+>Eq <A HREF="Main.html#t%3ATerm"
+>Term</A
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+>Show <A HREF="Main.html#t%3ATerm"
+>Term</A
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+>Show <A HREF="Main.html#t%3ATerm"
+>Term</A
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><SPAN CLASS="keyword"
+>type</SPAN
+> <A NAME="t%3AAtom"
+></A
+><B
+>Atom</B
+> = (String, [<A HREF="Main.html#t%3ATerm"
+>Term</A
+>])</TD
+></TR
+><TR
+><TD CLASS="doc"
+><P
+>Tipo <TT
+>Atom</TT
+>
+</P
+><P
+>Descripcion: este tipo de dato representa un Atomo de una clausula, que corresponde a una tupla de un String, que es el identificador, y una lista de Terminos.
+</P
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><SPAN CLASS="keyword"
+>type</SPAN
+> <A NAME="t%3ATail"
+></A
+><B
+>Tail</B
+> = [<A HREF="Main.html#t%3AAtom"
+>Atom</A
+>]</TD
+></TR
+><TR
+><TD CLASS="doc"
+><P
+>Tipo <TT
+>Tail</TT
+>
+</P
+><P
+>Descripcion: este tipo de dato representa una cola de una pregunta, que es una lista de Atomos.
+</P
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><SPAN CLASS="keyword"
+>data</SPAN
+> <A NAME="t%3AQuestion"
+></A
+><B
+>Question</B
+> </TD
+></TR
+><TR
+><TD CLASS="body"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD CLASS="ndoc"
+><P
+>Tipo <TT
+>Question</TT
+>
+</P
+><P
+>Descripcion: este tipo de dato representa una pregunta, y se crea con el constructor de tipo Q, y un Tail, que es una lista de Atomos.
+</P
+></TD
+></TR
+><TR
+><TD CLASS="section4"
+>Constructors</TD
+></TR
+><TR
+><TD CLASS="body"
+><TABLE CLASS="vanilla" CELLSPACING="1" CELLPADDING="0"
+><TR
+><TD CLASS="arg"
+><A NAME="v%3AQ"
+></A
+><B
+>Q</B
+> <A HREF="Main.html#t%3ATail"
+>Tail</A
+></TD
+><TD CLASS="rdoc"
+></TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="section4"
+><IMG SRC="minus.gif" CLASS="coll" ONCLICK="toggle(this,'i:Question')" ALT="show/hide"
+> Instances</TD
+></TR
+><TR
+><TD CLASS="body"
+><DIV ID="i:Question" STYLE="display:block;"
+><TABLE CLASS="vanilla" CELLSPACING="1" CELLPADDING="0"
+><TR
+><TD CLASS="decl"
+>Eq <A HREF="Main.html#t%3AQuestion"
+>Question</A
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+>Eq <A HREF="Main.html#t%3AQuestion"
+>Question</A
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+>Show <A HREF="Main.html#t%3AQuestion"
+>Question</A
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+>Show <A HREF="Main.html#t%3AQuestion"
+>Question</A
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><SPAN CLASS="keyword"
+>data</SPAN
+> <A NAME="t%3ADefinite"
+></A
+><B
+>Definite</B
+> </TD
+></TR
+><TR
+><TD CLASS="body"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD CLASS="ndoc"
+><P
+>Tipo <TT
+>Definite</TT
+>
+</P
+><P
+>Descripcion: Representa un Hecho o una Regla, con sus correspondientes contructores Fact o Rule.
+</P
+></TD
+></TR
+><TR
+><TD CLASS="section4"
+>Constructors</TD
+></TR
+><TR
+><TD CLASS="body"
+><TABLE CLASS="vanilla" CELLSPACING="1" CELLPADDING="0"
+><TR
+><TD CLASS="arg"
+><A NAME="v%3AFact"
+></A
+><B
+>Fact</B
+> <A HREF="Main.html#t%3AAtom"
+>Atom</A
+></TD
+><TD CLASS="rdoc"
+></TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ARule"
+></A
+><B
+>Rule</B
+> <A HREF="Main.html#t%3AAtom"
+>Atom</A
+> <A HREF="Main.html#t%3ATail"
+>Tail</A
+></TD
+><TD CLASS="rdoc"
+></TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="section4"
+><IMG SRC="minus.gif" CLASS="coll" ONCLICK="toggle(this,'i:Definite')" ALT="show/hide"
+> Instances</TD
+></TR
+><TR
+><TD CLASS="body"
+><DIV ID="i:Definite" STYLE="display:block;"
+><TABLE CLASS="vanilla" CELLSPACING="1" CELLPADDING="0"
+><TR
+><TD CLASS="decl"
+>Eq <A HREF="Main.html#t%3ADefinite"
+>Definite</A
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+>Eq <A HREF="Main.html#t%3ADefinite"
+>Definite</A
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+>Show <A HREF="Main.html#t%3ADefinite"
+>Definite</A
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+>Show <A HREF="Main.html#t%3ADefinite"
+>Definite</A
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><SPAN CLASS="keyword"
+>data</SPAN
+> <A NAME="t%3AProgram"
+></A
+><B
+>Program</B
+> </TD
+></TR
+><TR
+><TD CLASS="body"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD CLASS="ndoc"
+><P
+>Tipo <TT
+>Program</TT
+>
+</P
+><P
+>Descripcion: Este tipo representa un programa logico en Prolog, que es una lista de Definite con el constructor Prolog
+</P
+></TD
+></TR
+><TR
+><TD CLASS="section4"
+>Constructors</TD
+></TR
+><TR
+><TD CLASS="body"
+><TABLE CLASS="vanilla" CELLSPACING="1" CELLPADDING="0"
+><TR
+><TD CLASS="arg"
+><A NAME="v%3AProlog"
+></A
+><B
+>Prolog</B
+> [<A HREF="Main.html#t%3ADefinite"
+>Definite</A
+>]</TD
+><TD CLASS="rdoc"
+></TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="section4"
+><IMG SRC="minus.gif" CLASS="coll" ONCLICK="toggle(this,'i:Program')" ALT="show/hide"
+> Instances</TD
+></TR
+><TR
+><TD CLASS="body"
+><DIV ID="i:Program" STYLE="display:block;"
+><TABLE CLASS="vanilla" CELLSPACING="1" CELLPADDING="0"
+><TR
+><TD CLASS="decl"
+>Eq <A HREF="Main.html#t%3AProgram"
+>Program</A
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+>Eq <A HREF="Main.html#t%3AProgram"
+>Program</A
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+>Show <A HREF="Main.html#t%3AProgram"
+>Program</A
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+>Show <A HREF="Main.html#t%3AProgram"
+>Program</A
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><SPAN CLASS="keyword"
+>data</SPAN
+> <A NAME="t%3ASubs"
+></A
+><B
+>Subs</B
+> </TD
+></TR
+><TR
+><TD CLASS="body"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD CLASS="ndoc"
+><P
+>Tipo <TT
+>Subs</TT
+>
+</P
+><P
+>Descripcion: Este tipo de dato representa un conjunto de sustituciones, representada mediante una lista de tuplas de terminos, o un error de unificacion representada mediante un string.
+</P
+></TD
+></TR
+><TR
+><TD CLASS="section4"
+>Constructors</TD
+></TR
+><TR
+><TD CLASS="body"
+><TABLE CLASS="vanilla" CELLSPACING="1" CELLPADDING="0"
+><TR
+><TD CLASS="arg"
+><A NAME="v%3AS"
+></A
+><B
+>S</B
+> [(<A HREF="Main.html#t%3ATerm"
+>Term</A
+>, <A HREF="Main.html#t%3ATerm"
+>Term</A
+>)]</TD
+><TD CLASS="rdoc"
+></TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3AE"
+></A
+><B
+>E</B
+> String</TD
+><TD CLASS="rdoc"
+></TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="section4"
+><IMG SRC="minus.gif" CLASS="coll" ONCLICK="toggle(this,'i:Subs')" ALT="show/hide"
+> Instances</TD
+></TR
+><TR
+><TD CLASS="body"
+><DIV ID="i:Subs" STYLE="display:block;"
+><TABLE CLASS="vanilla" CELLSPACING="1" CELLPADDING="0"
+><TR
+><TD CLASS="decl"
+>Eq <A HREF="Main.html#t%3ASubs"
+>Subs</A
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+>Eq <A HREF="Main.html#t%3ASubs"
+>Subs</A
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+>Show <A HREF="Main.html#t%3ASubs"
+>Subs</A
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+>Show <A HREF="Main.html#t%3ASubs"
+>Subs</A
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A NAME="v%3Amult_sustitucion"
+></A
+><B
+>mult_sustitucion</B
+> :: <A HREF="Main.html#t%3ASubs"
+>Subs</A
+> -&gt; [<A HREF="Main.html#t%3AAtom"
+>Atom</A
+>] -&gt; [<A HREF="Main.html#t%3AAtom"
+>Atom</A
+>]</TD
+></TR
+><TR
+><TD CLASS="doc"
+><P
+>Funcion <TT
+>mult_sustitucion</TT
+>
+</P
+><P
+>Parametros de entrada: Un conjunto de sustituciones y una lista de atomos.
+</P
+><P
+>Salida: Retorna una la lista de atomos.
+</P
+><P
+>Descripcion: La funcion aplica el conjunto de sustituciones a la lista de atomos y retornando la nueva lista generada.
+</P
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A NAME="v%3Asustitucion"
+></A
+><B
+>sustitucion</B
+> :: <A HREF="Main.html#t%3ASubs"
+>Subs</A
+> -&gt; <A HREF="Main.html#t%3AAtom"
+>Atom</A
+> -&gt; <A HREF="Main.html#t%3AAtom"
+>Atom</A
+></TD
+></TR
+><TR
+><TD CLASS="doc"
+><P
+>Funcion <TT
+>sustitucion</TT
+>
+</P
+><P
+>Parametros de entrada: Un conjunto de substituciones y un atomo.
+</P
+><P
+>Salida: Retorna un atomo.
+</P
+><P
+>Descripcion: La funcion aplica el conjunto de sustituciones a el atomo que recibe de entrada, y devuelve el nuevo atomo generado.
+</P
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A NAME="v%3Asustit"
+></A
+><B
+>sustit</B
+> :: <A HREF="Main.html#t%3ASubs"
+>Subs</A
+> -&gt; <A HREF="Main.html#t%3ATerm"
+>Term</A
+> -&gt; <A HREF="Main.html#t%3ATerm"
+>Term</A
+></TD
+></TR
+><TR
+><TD CLASS="doc"
+><P
+>Funcion <TT
+>sustit</TT
+>
+</P
+><P
+>Parametros de entrada: Un conjunto de sustituciones y un termino.
+</P
+><P
+>Salida: Un termino.
+</P
+><P
+>Descripcion: La funcion aplica un conjunto de sustituciones a un termino, y retorna el nuevo termino generado.
+</P
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A NAME="v%3AisVar"
+></A
+><B
+>isVar</B
+> :: <A HREF="Main.html#t%3ATerm"
+>Term</A
+> -&gt; Bool</TD
+></TR
+><TR
+><TD CLASS="doc"
+><P
+>Funcion <TT
+>isVar</TT
+>
+</P
+><P
+>Parametros de entrada: Un termino.
+</P
+><P
+>Salida: Un Bool.
+</P
+><P
+>Descripcion: La Funcion recibe un termino y determina si el mismo es una variable, retornando un booleano.
+</P
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A NAME="v%3Arobinson"
+></A
+><B
+>robinson</B
+> :: <A HREF="Main.html#t%3AAtom"
+>Atom</A
+> -&gt; <A HREF="Main.html#t%3AAtom"
+>Atom</A
+> -&gt; <A HREF="Main.html#t%3ASubs"
+>Subs</A
+></TD
+></TR
+><TR
+><TD CLASS="doc"
+><P
+>Funcion <TT
+>robinson</TT
+>
+</P
+><P
+>Parametros de entrada: Dos atomos.
+</P
+><P
+>Salida: Un conjunto de susbtituciones o un mensaje de error.
+</P
+><P
+>Descripcion: La Funcion recibe dos atomos, e intentara buscar un unificador general, el cual retornara a la salida. Se verificara si los dos predicados son iguales y si las aridades del mismo son de la misma aridad. En este caso se llamara a la funcion alan, pasando como parametro todos los pares de terminos de los atomos en la pila generada por la funcion pares, para asi ir empilando cada una de las sustituciones necesarias para unificar, y retornar las mismas a la salida.
+</P
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A NAME="v%3Apares"
+></A
+><B
+>pares</B
+> :: [<A HREF="Main.html#t%3ATerm"
+>Term</A
+>] -&gt; [<A HREF="Main.html#t%3ATerm"
+>Term</A
+>] -&gt; [(<A HREF="Main.html#t%3ATerm"
+>Term</A
+>, <A HREF="Main.html#t%3ATerm"
+>Term</A
+>)]</TD
+></TR
+><TR
+><TD CLASS="doc"
+><P
+>Funcion <TT
+>pares</TT
+>
+</P
+><P
+>Parametros de entrada: Dos listas de terminos.
+</P
+><P
+>Salida: Una lista de tuplas de terminos, semejante a una pila.
+</P
+><P
+>Descripcion: La funcion recibe par de listas de terminos, y va a generar una pila de tuplas de terminos, que contendra a todos los posibles terminos candidatos a subtitucion entre el programa y la pregunta.
+</P
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A NAME="v%3Aalan"
+></A
+><B
+>alan</B
+> :: [(<A HREF="Main.html#t%3ATerm"
+>Term</A
+>, <A HREF="Main.html#t%3ATerm"
+>Term</A
+>)] -&gt; <A HREF="Main.html#t%3ASubs"
+>Subs</A
+></TD
+></TR
+><TR
+><TD CLASS="doc"
+><P
+>Funcion <TT
+>alan</TT
+>
+</P
+><P
+>Parametros de entrada: Una lista de tuplas de terminos.
+</P
+><P
+>Salida: un conjunto de sustituciones o un string de error.
+</P
+><P
+>Descripcion: La funcion recibe una lista de tuplas de terminos, provenientes de la funcion pares, y se encrga de encontrar para cada tupla, el par sustitucion correspondiente, asi para todos los elementos de la lista, y devuelve el conjunto de sustituciones correspondiente.
+</P
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A NAME="v%3AsustituirPar"
+></A
+><B
+>sustituirPar</B
+> :: <A HREF="Main.html#t%3ASubs"
+>Subs</A
+> -&gt; (<A HREF="Main.html#t%3ATerm"
+>Term</A
+>, <A HREF="Main.html#t%3ATerm"
+>Term</A
+>) -&gt; (<A HREF="Main.html#t%3ATerm"
+>Term</A
+>, <A HREF="Main.html#t%3ATerm"
+>Term</A
+>)</TD
+></TR
+><TR
+><TD CLASS="doc"
+><P
+>Funcion <TT
+>sustituirPar</TT
+>
+</P
+><P
+>Parametros de entrada: un conjunto de sustituciones y una tupla de terminos.
+</P
+><P
+>Salida: Una tupla de terminos
+</P
+><P
+>Descripcion: La funcion toma el conjunto de sustituciones y se la aplica al par de terminos de la tupla, luego retorna la tupla generada correspondiente.
+</P
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A NAME="v%3Acatsub"
+></A
+><B
+>catsub</B
+> :: <A HREF="Main.html#t%3ASubs"
+>Subs</A
+> -&gt; <A HREF="Main.html#t%3ASubs"
+>Subs</A
+> -&gt; <A HREF="Main.html#t%3ASubs"
+>Subs</A
+></TD
+></TR
+><TR
+><TD CLASS="doc"
+><P
+>Funcion <TT
+>catsub</TT
+>
+</P
+><P
+>Parametros de entrada: Dos conjuntos de sustituciones.
+</P
+><P
+>Salida: Un conjunto de sustituciones.
+</P
+><P
+>Descripcion: La funcion toma dos conjuntos de sustituciones y los une para formar un solo conjunto, el cual sera retornado a la salida.
+</P
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A NAME="v%3Aoccurs_check"
+></A
+><B
+>occurs_check</B
+> :: <A HREF="Main.html#t%3ATerm"
+>Term</A
+> -&gt; <A HREF="Main.html#t%3ATerm"
+>Term</A
+> -&gt; Bool</TD
+></TR
+><TR
+><TD CLASS="doc"
+><P
+>Funcion <TT
+>occurs_check</TT
+>
+</P
+><P
+>Parametros de entrada: Dos terminos.
+</P
+><P
+>Salida: un booleano.
+</P
+><P
+>Descripcion: La funcion toma dos terminos, y para terminos que sean una variable y una funcion, y viceversa, procedera a verificar la ocurrencia de la variable dentro de la funcion. Para cualquier otro termino, devolvera Falso.
+</P
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A NAME="v%3Apertenece"
+></A
+><B
+>pertenece</B
+> :: <A HREF="Main.html#t%3ATerm"
+>Term</A
+> -&gt; [<A HREF="Main.html#t%3ATerm"
+>Term</A
+>] -&gt; Bool</TD
+></TR
+><TR
+><TD CLASS="doc"
+><P
+>Funcion <TT
+>pertenece</TT
+>
+</P
+><P
+>Parametros de entrada: Un termino y una lista de terminos.
+</P
+><P
+>Salida: un booleano.
+</P
+><P
+>Descripcion: la funcion verifica si un termino, especificamente una variable, pertenece a una lista de terminos, que contiene variables o funciones. En caso de otro tipo de terminos la funcion retorna false.
+</P
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A NAME="v%3Aresolucion"
+></A
+><B
+>resolucion</B
+> :: <A HREF="Main.html#t%3AQuestion"
+>Question</A
+> -&gt; <A HREF="Main.html#t%3AProgram"
+>Program</A
+> -&gt; <A HREF="Main.html#t%3ASubs"
+>Subs</A
+></TD
+></TR
+><TR
+><TD CLASS="doc"
+><P
+>Funcion <TT
+>resolucion</TT
+> 
+</P
+><P
+>Parametros de entrada: 1 pregunta; 1 programa
+</P
+><P
+>Salida: Una lista de todas las sustituciones que se deben hacer a un programa para obtener un resolvente igual a la meta clausula vacia.
+</P
+><P
+>Descripcion: La funcion 
+</P
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A NAME="v%3AclauseUni"
+></A
+><B
+>clauseUni</B
+> :: [<A HREF="Main.html#t%3ADefinite"
+>Definite</A
+>] -&gt; <A HREF="Main.html#t%3AAtom"
+>Atom</A
+> -&gt; <A HREF="Main.html#t%3ADefinite"
+>Definite</A
+></TD
+></TR
+><TR
+><TD CLASS="doc"
+><P
+>Funcion: <TT
+>clauseUni</TT
+>
+</P
+><P
+>Parametros de entrada: 1 Lista de clausulas <A HREF="definite.html"
+>definite</A
+> ; 1 atomo
+</P
+><P
+>Salida: clauseUni devuelve la primera clausula definite de la lista que sea unificable con el atomo.
+</P
+><P
+>Descripcion: La funcion es utilizada en la funcion resolucion para determinar el primer atomo de un programa que sea unificable con el primer atomo del parametro de entrada de resolucion correspondiente a una pregunta.
+</P
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A NAME="v%3AsubsToList"
+></A
+><B
+>subsToList</B
+> :: <A HREF="Main.html#t%3ASubs"
+>Subs</A
+> -&gt; [(<A HREF="Main.html#t%3ATerm"
+>Term</A
+>, <A HREF="Main.html#t%3ATerm"
+>Term</A
+>)]</TD
+></TR
+><TR
+><TD CLASS="doc"
+><P
+>Funcion: <TT
+>subsToList</TT
+>
+</P
+><P
+>Parametros de Entrada: Un tipo de datos susutitucion (Subs)
+</P
+><P
+>Salida: La lista [(Term,Term)] correspondiente a subs
+</P
+><P
+>Descricion: En el caso de que subs sea una lista de tuplas de terminos, la funcion retorna es lista. En el caso de que subs sea un error, la funcion retorna la lista vacia. 
+</P
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A NAME="v%3AcatchAtom"
+></A
+><B
+>catchAtom</B
+> :: <A HREF="Main.html#t%3ADefinite"
+>Definite</A
+> -&gt; <A HREF="Main.html#t%3AAtom"
+>Atom</A
+></TD
+></TR
+><TR
+><TD CLASS="doc"
+><P
+>Funcion: <TT
+>catchAtom</TT
+>
+</P
+><P
+>Parametro de entrada: Un tipo de clausula definite
+</P
+><P
+>Salida: el atomo positivo de la clausula
+</P
+><P
+>Descripcion: Esta funcion se creo para poder acceder al atomo de una clausula definite independientemente de que la clausula sea una regla o un hecho. Como todas las clausulas definite tienen uno y solo un atomo positivo, la funcion funciona bajo el dominio de todas las clausulas definite.
+</P
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A NAME="v%3AcatchTail"
+></A
+><B
+>catchTail</B
+> :: <A HREF="Main.html#t%3ADefinite"
+>Definite</A
+> -&gt; <A HREF="Main.html#t%3ATail"
+>Tail</A
+></TD
+></TR
+><TR
+><TD CLASS="doc"
+><P
+>Funcion: <TT
+>catchTail</TT
+>
+</P
+><P
+>Parametro de entrada: Un tipo de clausula definite
+</P
+><P
+>Salida: La lista de atomos negativos correspondientes a la clausula.
+</P
+><P
+>Descripcion: En el caso de que la clausula de entrada sea una regla la funcion retorna la lista de atomos negativos asociada a esa regla. En el caso de que la clausula sea un hecho, la funcion retorna una lista vacia.
+</P
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A NAME="v%3AcatchError"
+></A
+><B
+>catchError</B
+> :: <A HREF="Main.html#t%3ASubs"
+>Subs</A
+> -&gt; Bool</TD
+></TR
+><TR
+><TD CLASS="doc"
+><P
+>Funcion <TT
+>catchError</TT
+>
+</P
+><P
+>Parametro de Entrada: Un tipo de datos Subs
+</P
+><P
+>Salida: Bool
+</P
+><P
+>Descripcion: La funcion devuelve True en el caso de que subs corresponda a un error y retorna False en el caso de que subs corresponda a una lista de tuplas de terminos.
+</P
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><A NAME="v%3Amain"
+></A
+><B
+>main</B
+> :: IO ()</TD
+></TR
+><TR
+><TD CLASS="doc"
+>Funcion <TT
+>main</TT
+>
+Descripcion: funcion principal en donde se ejecuta el programa, y se hace la llamada a cada funcion.
+</TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="botbar"
+>Produced by <A HREF="http://www.haskell.org/haddock/"
+>Haddock</A
+> version 0.8</TD
+></TR
+></TABLE
+></BODY
+></HTML
+>

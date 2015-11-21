@@ -1,0 +1,2620 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!--Rendered using the Haskell Html Library v0.2-->
+<HTML
+><HEAD
+><META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8"
+><TITLE
+>Abstract</TITLE
+><LINK HREF="haddock.css" REL="stylesheet" TYPE="text/css"
+><SCRIPT SRC="haddock.js" TYPE="text/javascript"
+></SCRIPT
+></HEAD
+><BODY
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD CLASS="topbar"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD
+><IMG SRC="haskell_icon.gif" WIDTH="16" HEIGHT="16" ALT=" "
+></TD
+><TD CLASS="title"
+></TD
+><TD CLASS="topbut"
+><A HREF="index.html"
+>Contents</A
+></TD
+><TD CLASS="topbut"
+><A HREF="doc-index.html"
+>Index</A
+></TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="modulebar"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD
+><FONT SIZE="6"
+>Abstract</FONT
+></TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD CLASS="section4"
+><B
+>Contents</B
+></TD
+></TR
+><TR
+><TD
+><DL
+><DT
+><A HREF="#1"
+>Tipos exportados.
+</A
+></DT
+><DD
+><DL
+><DT
+><A HREF="#2"
+>Mundo ( El mundo donde habita Willy )
+</A
+></DT
+><DT
+><A HREF="#3"
+>Declara funciones del Mundo
+</A
+></DT
+><DT
+><A HREF="#4"
+>Declara funciones del Mundo
+</A
+></DT
+><DT
+><A HREF="#5"
+>Declara funciones del Mundo
+</A
+></DT
+><DT
+><A HREF="#6"
+>Coloca Paredes o Basura
+</A
+></DT
+><DT
+><A HREF="#7"
+>Representa la coordenada X del Mundo
+</A
+></DT
+><DT
+><A HREF="#8"
+>Representa la coordenada Y  del Mundo
+</A
+></DT
+><DT
+><A HREF="#9"
+>Direccion en que es colocado Willy
+</A
+></DT
+><DT
+><A HREF="#10"
+>Pared colocada en el Mundo
+</A
+></DT
+><DT
+><A HREF="#11"
+>Lista de Paredes colocadas en el Mundo
+</A
+></DT
+><DT
+><A HREF="#12"
+>Basura colocada en el Mundo
+</A
+></DT
+><DT
+><A HREF="#13"
+>Lista de Basuras colocadas en el Mundo
+</A
+></DT
+><DT
+><A HREF="#14"
+>Instruccion de Willy
+</A
+></DT
+><DT
+><A HREF="#15"
+>Lista de Instrucciones de Willy
+</A
+></DT
+><DT
+><A HREF="#16"
+>Instrucciones en una sentencia  IF
+</A
+></DT
+><DT
+><A HREF="#17"
+>Booleano definido en el lenguaje
+</A
+></DT
+><DT
+><A HREF="#18"
+>Tabla de Simbolos
+</A
+></DT
+><DT
+><A HREF="#19"
+>Tipo Symbol de la tabla de simbolos
+</A
+></DT
+></DL
+></DD
+></DL
+></TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="section1"
+>Description</TD
+></TR
+><TR
+><TD CLASS="doc"
+><P
+><EM
+>Tabla de Simbolos y Arbol para el lenguaje Willy</EM
+>
+</P
+><P
+>Traductores e Interpretadores CI3725
+</P
+><P
+>Versi&#xc3;&#xb3;n 1.0 2008-11-15
+</P
+><P
+>GRUPO 8:
+</P
+><P
+>05-38546 Tamara Mendt
+    05-38207 Juan Garc&#xc3;&#xad;a
+</P
+><P
+>Este m&#xc3;&#xb3;dulo, desarrollado en Happy, implanta una Tabla de 
+	Simbolos para el lenguaje Willy. Incluye la declaracion de
+	todos los TADs necesarios para la construccion del Arbol Sintactico.
+</P
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="section1"
+>Synopsis</TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="body"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD CLASS="decl"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD CLASS="decl"
+><SPAN CLASS="keyword"
+>data</SPAN
+> <A HREF="#t%3AWORLD"
+>WORLD</A
+> </TD
+></TR
+><TR
+><TD CLASS="body"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD CLASS="decl"
+>= <A HREF="#v%3AWorld1"
+>World1</A
+> <A HREF="Abstract.html#t%3AEJEX"
+>EJEX</A
+> <A HREF="Abstract.html#t%3AEJEY"
+>EJEY</A
+> <A HREF="Abstract.html#t%3ASEENWORLD"
+>SEENWORLD</A
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3AStartat1"
+>Startat1</A
+> <A HREF="Abstract.html#t%3AEJEX"
+>EJEX</A
+> <A HREF="Abstract.html#t%3AEJEY"
+>EJEY</A
+> <A HREF="Abstract.html#t%3ADIRECTION"
+>DIRECTION</A
+> <A HREF="Abstract.html#t%3ASEENSTART"
+>SEENSTART</A
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3AWallorPlace1"
+>WallorPlace1</A
+> <A HREF="Abstract.html#t%3AWALLorPLACE"
+>WALLorPLACE</A
+> <A HREF="Abstract.html#t%3AWORLD"
+>WORLD</A
+></TD
+></TR
+></TABLE
+></TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD CLASS="decl"
+><SPAN CLASS="keyword"
+>data</SPAN
+> <A HREF="#t%3ASEENWORLD"
+>SEENWORLD</A
+> </TD
+></TR
+><TR
+><TD CLASS="body"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD CLASS="decl"
+>= <A HREF="#v%3AStartat2"
+>Startat2</A
+> <A HREF="Abstract.html#t%3AEJEX"
+>EJEX</A
+> <A HREF="Abstract.html#t%3AEJEY"
+>EJEY</A
+> <A HREF="Abstract.html#t%3ADIRECTION"
+>DIRECTION</A
+> <A HREF="Abstract.html#t%3ASEENSTARTandWORLD"
+>SEENSTARTandWORLD</A
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3ASeenWorld"
+>SeenWorld</A
+> <A HREF="Abstract.html#t%3AWALLorPLACE"
+>WALLorPLACE</A
+> <A HREF="Abstract.html#t%3ASEENWORLD"
+>SEENWORLD</A
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3AStartat3"
+>Startat3</A
+> <A HREF="Abstract.html#t%3AEJEX"
+>EJEX</A
+> <A HREF="Abstract.html#t%3AEJEY"
+>EJEY</A
+> <A HREF="Abstract.html#t%3ADIRECTION"
+>DIRECTION</A
+></TD
+></TR
+></TABLE
+></TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD CLASS="decl"
+><SPAN CLASS="keyword"
+>data</SPAN
+> <A HREF="#t%3ASEENSTART"
+>SEENSTART</A
+> </TD
+></TR
+><TR
+><TD CLASS="body"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD CLASS="decl"
+>= <A HREF="#v%3AWorld2"
+>World2</A
+> <A HREF="Abstract.html#t%3AEJEX"
+>EJEX</A
+> <A HREF="Abstract.html#t%3AEJEY"
+>EJEY</A
+> <A HREF="Abstract.html#t%3ASEENSTARTandWORLD"
+>SEENSTARTandWORLD</A
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3ASeenStart"
+>SeenStart</A
+> <A HREF="Abstract.html#t%3AWALLorPLACE"
+>WALLorPLACE</A
+> <A HREF="Abstract.html#t%3ASEENSTART"
+>SEENSTART</A
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3AWorld3"
+>World3</A
+> <A HREF="Abstract.html#t%3AEJEX"
+>EJEX</A
+> <A HREF="Abstract.html#t%3AEJEY"
+>EJEY</A
+></TD
+></TR
+></TABLE
+></TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD CLASS="decl"
+><SPAN CLASS="keyword"
+>data</SPAN
+> <A HREF="#t%3ASEENSTARTandWORLD"
+>SEENSTARTandWORLD</A
+> </TD
+></TR
+><TR
+><TD CLASS="body"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD CLASS="decl"
+>= <A HREF="#v%3ASeenStartandWorld"
+>SeenStartandWorld</A
+> <A HREF="Abstract.html#t%3AWALLorPLACE"
+>WALLorPLACE</A
+> <A HREF="Abstract.html#t%3ASEENSTARTandWORLD"
+>SEENSTARTandWORLD</A
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3AWallorPlace2"
+>WallorPlace2</A
+> <A HREF="Abstract.html#t%3AWALLorPLACE"
+>WALLorPLACE</A
+></TD
+></TR
+></TABLE
+></TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD CLASS="decl"
+><SPAN CLASS="keyword"
+>data</SPAN
+> <A HREF="#t%3AWALLorPLACE"
+>WALLorPLACE</A
+> </TD
+></TR
+><TR
+><TD CLASS="body"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD CLASS="decl"
+>= <A HREF="#v%3AWall"
+>Wall</A
+> <A HREF="Abstract.html#t%3ALISTAPARED"
+>LISTAPARED</A
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3AGarbage"
+>Garbage</A
+> <A HREF="Abstract.html#t%3ALISTAGARBAGE"
+>LISTAGARBAGE</A
+></TD
+></TR
+></TABLE
+></TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><SPAN CLASS="keyword"
+>data</SPAN
+> <A HREF="#t%3AEJEX"
+>EJEX</A
+>  = <A HREF="#v%3AEjeX"
+>EjeX</A
+> Int</TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><SPAN CLASS="keyword"
+>data</SPAN
+> <A HREF="#t%3AEJEY"
+>EJEY</A
+>  = <A HREF="#v%3AEjeY"
+>EjeY</A
+> Int</TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD CLASS="decl"
+><SPAN CLASS="keyword"
+>data</SPAN
+> <A HREF="#t%3ADIRECTION"
+>DIRECTION</A
+> </TD
+></TR
+><TR
+><TD CLASS="body"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD CLASS="decl"
+>= <A HREF="#v%3ANorth"
+>North</A
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3ASouth"
+>South</A
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3AEast"
+>East</A
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3AWest"
+>West</A
+></TD
+></TR
+></TABLE
+></TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><SPAN CLASS="keyword"
+>data</SPAN
+> <A HREF="#t%3APARED"
+>PARED</A
+>  = <A HREF="#v%3AWall1"
+>Wall1</A
+> <A HREF="Abstract.html#t%3ADIRECTION"
+>DIRECTION</A
+> <A HREF="Abstract.html#t%3AEJEX"
+>EJEX</A
+> <A HREF="Abstract.html#t%3AEJEY"
+>EJEY</A
+> <A HREF="Abstract.html#t%3AEJEX"
+>EJEX</A
+> <A HREF="Abstract.html#t%3AEJEY"
+>EJEY</A
+></TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><SPAN CLASS="keyword"
+>type</SPAN
+> <A HREF="#t%3ALISTAPARED"
+>LISTAPARED</A
+> = [<A HREF="Abstract.html#t%3APARED"
+>PARED</A
+>]</TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><SPAN CLASS="keyword"
+>data</SPAN
+> <A HREF="#t%3AGARBAGE"
+>GARBAGE</A
+>  = <A HREF="#v%3AGarbage1"
+>Garbage1</A
+> Int <A HREF="Abstract.html#t%3AEJEX"
+>EJEX</A
+> <A HREF="Abstract.html#t%3AEJEY"
+>EJEY</A
+></TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><SPAN CLASS="keyword"
+>type</SPAN
+> <A HREF="#t%3ALISTAGARBAGE"
+>LISTAGARBAGE</A
+> = [<A HREF="Abstract.html#t%3AGARBAGE"
+>GARBAGE</A
+>]</TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD CLASS="decl"
+><SPAN CLASS="keyword"
+>data</SPAN
+> <A HREF="#t%3AINSTRUCTION"
+>INSTRUCTION</A
+> </TD
+></TR
+><TR
+><TD CLASS="body"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD CLASS="decl"
+>= <A HREF="#v%3ABegin"
+>Begin</A
+> <A HREF="Abstract.html#t%3ALISTAINSTRUCTION"
+>LISTAINSTRUCTION</A
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3ANoElse"
+>NoElse</A
+> <A HREF="Abstract.html#t%3AINSTIF"
+>INSTIF</A
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3AElse"
+>Else</A
+> <A HREF="Abstract.html#t%3AINSTIF"
+>INSTIF</A
+> <A HREF="Abstract.html#t%3AINSTRUCTION"
+>INSTRUCTION</A
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3ARepeat"
+>Repeat</A
+> Int <A HREF="Abstract.html#t%3AINSTRUCTION"
+>INSTRUCTION</A
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3AWhile"
+>While</A
+> <A HREF="Abstract.html#t%3ABOOL"
+>BOOL</A
+> <A HREF="Abstract.html#t%3AINSTRUCTION"
+>INSTRUCTION</A
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3AMove"
+>Move</A
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3ATurnleft"
+>Turnleft</A
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3APicktrash"
+>Picktrash</A
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3ADroptrash"
+>Droptrash</A
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3AShutdown"
+>Shutdown</A
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3AIdProc"
+>IdProc</A
+> String</TD
+></TR
+></TABLE
+></TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><SPAN CLASS="keyword"
+>type</SPAN
+> <A HREF="#t%3ALISTAINSTRUCTION"
+>LISTAINSTRUCTION</A
+> = [<A HREF="Abstract.html#t%3AINSTRUCTION"
+>INSTRUCTION</A
+>]</TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><SPAN CLASS="keyword"
+>data</SPAN
+> <A HREF="#t%3AINSTIF"
+>INSTIF</A
+>  = <A HREF="#v%3AIfThen"
+>IfThen</A
+> <A HREF="Abstract.html#t%3ABOOL"
+>BOOL</A
+> <A HREF="Abstract.html#t%3AINSTRUCTION"
+>INSTRUCTION</A
+></TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD CLASS="decl"
+><SPAN CLASS="keyword"
+>data</SPAN
+> <A HREF="#t%3ABOOL"
+>BOOL</A
+> </TD
+></TR
+><TR
+><TD CLASS="body"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD CLASS="decl"
+>= <A HREF="#v%3AOr"
+>Or</A
+> <A HREF="Abstract.html#t%3ABOOL"
+>BOOL</A
+> <A HREF="Abstract.html#t%3ABOOL"
+>BOOL</A
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3AAnd"
+>And</A
+> <A HREF="Abstract.html#t%3ABOOL"
+>BOOL</A
+> <A HREF="Abstract.html#t%3ABOOL"
+>BOOL</A
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3ANot"
+>Not</A
+> <A HREF="Abstract.html#t%3ABOOL"
+>BOOL</A
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3AFrontisclear"
+>Frontisclear</A
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3ALeftisclear"
+>Leftisclear</A
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3ARightisclear"
+>Rightisclear</A
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3ALookingnorth"
+>Lookingnorth</A
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3ALookingsouth"
+>Lookingsouth</A
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3ALookingeast"
+>Lookingeast</A
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3ALookingwest"
+>Lookingwest</A
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3AFoundtrash"
+>Foundtrash</A
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+>| <A HREF="#v%3ACarryingtrash"
+>Carryingtrash</A
+></TD
+></TR
+></TABLE
+></TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><SPAN CLASS="keyword"
+>type</SPAN
+> <A HREF="#t%3AAbstract"
+>Abstract</A
+> = [(String, <A HREF="Abstract.html#t%3ASymbol"
+>Symbol</A
+>)]</TD
+></TR
+><TR
+><TD CLASS="s8"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><SPAN CLASS="keyword"
+>type</SPAN
+> <A HREF="#t%3ASymbol"
+>Symbol</A
+> = (Maybe <A HREF="Abstract.html#t%3AWORLD"
+>WORLD</A
+>, Maybe <A HREF="Abstract.html#t%3AINSTRUCTION"
+>INSTRUCTION</A
+>)</TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="section1"
+><A NAME="1"
+>Tipos exportados.
+</A
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="section2"
+><A NAME="2"
+>Mundo ( El mundo donde habita Willy )
+</A
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><SPAN CLASS="keyword"
+>data</SPAN
+> <A NAME="t%3AWORLD"
+></A
+><B
+>WORLD</B
+> </TD
+></TR
+><TR
+><TD CLASS="body"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD CLASS="ndoc"
+>El tipo de datos <TT
+>WORLD</TT
+> permite representar el mundo de Willy,
+     se definen las coordenadas del mundo. Ademas permite
+     establecer la posicion inicial de Willy, o si se desea
+     colocar una pared o una basura 
+</TD
+></TR
+><TR
+><TD CLASS="section4"
+>Constructors</TD
+></TR
+><TR
+><TD CLASS="body"
+><TABLE CLASS="vanilla" CELLSPACING="1" CELLPADDING="0"
+><TR
+><TD CLASS="arg"
+><A NAME="v%3AWorld1"
+></A
+><B
+>World1</B
+> <A HREF="Abstract.html#t%3AEJEX"
+>EJEX</A
+> <A HREF="Abstract.html#t%3AEJEY"
+>EJEY</A
+> <A HREF="Abstract.html#t%3ASEENWORLD"
+>SEENWORLD</A
+></TD
+><TD CLASS="rdoc"
+></TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3AStartat1"
+></A
+><B
+>Startat1</B
+> <A HREF="Abstract.html#t%3AEJEX"
+>EJEX</A
+> <A HREF="Abstract.html#t%3AEJEY"
+>EJEY</A
+> <A HREF="Abstract.html#t%3ADIRECTION"
+>DIRECTION</A
+> <A HREF="Abstract.html#t%3ASEENSTART"
+>SEENSTART</A
+></TD
+><TD CLASS="rdoc"
+></TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3AWallorPlace1"
+></A
+><B
+>WallorPlace1</B
+> <A HREF="Abstract.html#t%3AWALLorPLACE"
+>WALLorPLACE</A
+> <A HREF="Abstract.html#t%3AWORLD"
+>WORLD</A
+></TD
+><TD CLASS="rdoc"
+></TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="section4"
+><IMG SRC="minus.gif" CLASS="coll" ONCLICK="toggle(this,'i:WORLD')" ALT="show/hide"
+> Instances</TD
+></TR
+><TR
+><TD CLASS="body"
+><DIV ID="i:WORLD" STYLE="display:block;"
+><TABLE CLASS="vanilla" CELLSPACING="1" CELLPADDING="0"
+><TR
+><TD CLASS="decl"
+>Eq <A HREF="Abstract.html#t%3AWORLD"
+>WORLD</A
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+>Show <A HREF="Abstract.html#t%3AWORLD"
+>WORLD</A
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="section2"
+><A NAME="3"
+>Declara funciones del Mundo
+</A
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><SPAN CLASS="keyword"
+>data</SPAN
+> <A NAME="t%3ASEENWORLD"
+></A
+><B
+>SEENWORLD</B
+> </TD
+></TR
+><TR
+><TD CLASS="body"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD CLASS="ndoc"
+>El tipo de datos <TT
+>SEENWORLD</TT
+> permite  representar el mundo de Willy,
+     se definen las coordenadas del mundo. Ademas permite
+     establecer la posicion inicial de Willy, o si se desea
+     colocar una pared o una basura 
+</TD
+></TR
+><TR
+><TD CLASS="section4"
+>Constructors</TD
+></TR
+><TR
+><TD CLASS="body"
+><TABLE CLASS="vanilla" CELLSPACING="1" CELLPADDING="0"
+><TR
+><TD CLASS="arg"
+><A NAME="v%3AStartat2"
+></A
+><B
+>Startat2</B
+> <A HREF="Abstract.html#t%3AEJEX"
+>EJEX</A
+> <A HREF="Abstract.html#t%3AEJEY"
+>EJEY</A
+> <A HREF="Abstract.html#t%3ADIRECTION"
+>DIRECTION</A
+> <A HREF="Abstract.html#t%3ASEENSTARTandWORLD"
+>SEENSTARTandWORLD</A
+></TD
+><TD CLASS="rdoc"
+></TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ASeenWorld"
+></A
+><B
+>SeenWorld</B
+> <A HREF="Abstract.html#t%3AWALLorPLACE"
+>WALLorPLACE</A
+> <A HREF="Abstract.html#t%3ASEENWORLD"
+>SEENWORLD</A
+></TD
+><TD CLASS="rdoc"
+></TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3AStartat3"
+></A
+><B
+>Startat3</B
+> <A HREF="Abstract.html#t%3AEJEX"
+>EJEX</A
+> <A HREF="Abstract.html#t%3AEJEY"
+>EJEY</A
+> <A HREF="Abstract.html#t%3ADIRECTION"
+>DIRECTION</A
+></TD
+><TD CLASS="rdoc"
+></TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="section4"
+><IMG SRC="minus.gif" CLASS="coll" ONCLICK="toggle(this,'i:SEENWORLD')" ALT="show/hide"
+> Instances</TD
+></TR
+><TR
+><TD CLASS="body"
+><DIV ID="i:SEENWORLD" STYLE="display:block;"
+><TABLE CLASS="vanilla" CELLSPACING="1" CELLPADDING="0"
+><TR
+><TD CLASS="decl"
+>Eq <A HREF="Abstract.html#t%3ASEENWORLD"
+>SEENWORLD</A
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+>Show <A HREF="Abstract.html#t%3ASEENWORLD"
+>SEENWORLD</A
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="section2"
+><A NAME="4"
+>Declara funciones del Mundo
+</A
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><SPAN CLASS="keyword"
+>data</SPAN
+> <A NAME="t%3ASEENSTART"
+></A
+><B
+>SEENSTART</B
+> </TD
+></TR
+><TR
+><TD CLASS="body"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD CLASS="ndoc"
+>El tipo de datos <TT
+>SEENSTART</TT
+> permite representar el mundo de Willy,
+     se definen las coordenadas del mundo. Ademas permite
+     establecer la posicion inicial de Willy, o si se desea
+     colocar una pared o una basura 
+</TD
+></TR
+><TR
+><TD CLASS="section4"
+>Constructors</TD
+></TR
+><TR
+><TD CLASS="body"
+><TABLE CLASS="vanilla" CELLSPACING="1" CELLPADDING="0"
+><TR
+><TD CLASS="arg"
+><A NAME="v%3AWorld2"
+></A
+><B
+>World2</B
+> <A HREF="Abstract.html#t%3AEJEX"
+>EJEX</A
+> <A HREF="Abstract.html#t%3AEJEY"
+>EJEY</A
+> <A HREF="Abstract.html#t%3ASEENSTARTandWORLD"
+>SEENSTARTandWORLD</A
+></TD
+><TD CLASS="rdoc"
+></TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ASeenStart"
+></A
+><B
+>SeenStart</B
+> <A HREF="Abstract.html#t%3AWALLorPLACE"
+>WALLorPLACE</A
+> <A HREF="Abstract.html#t%3ASEENSTART"
+>SEENSTART</A
+></TD
+><TD CLASS="rdoc"
+></TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3AWorld3"
+></A
+><B
+>World3</B
+> <A HREF="Abstract.html#t%3AEJEX"
+>EJEX</A
+> <A HREF="Abstract.html#t%3AEJEY"
+>EJEY</A
+></TD
+><TD CLASS="rdoc"
+></TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="section4"
+><IMG SRC="minus.gif" CLASS="coll" ONCLICK="toggle(this,'i:SEENSTART')" ALT="show/hide"
+> Instances</TD
+></TR
+><TR
+><TD CLASS="body"
+><DIV ID="i:SEENSTART" STYLE="display:block;"
+><TABLE CLASS="vanilla" CELLSPACING="1" CELLPADDING="0"
+><TR
+><TD CLASS="decl"
+>Eq <A HREF="Abstract.html#t%3ASEENSTART"
+>SEENSTART</A
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+>Show <A HREF="Abstract.html#t%3ASEENSTART"
+>SEENSTART</A
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="section2"
+><A NAME="5"
+>Declara funciones del Mundo
+</A
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><SPAN CLASS="keyword"
+>data</SPAN
+> <A NAME="t%3ASEENSTARTandWORLD"
+></A
+><B
+>SEENSTARTandWORLD</B
+> </TD
+></TR
+><TR
+><TD CLASS="body"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD CLASS="ndoc"
+>El tipo de datos <TT
+>SEENSTARTandWORLD</TT
+> permite
+     colocar una pared o una basura. O una lista de
+     las mismas
+</TD
+></TR
+><TR
+><TD CLASS="section4"
+>Constructors</TD
+></TR
+><TR
+><TD CLASS="body"
+><TABLE CLASS="vanilla" CELLSPACING="1" CELLPADDING="0"
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ASeenStartandWorld"
+></A
+><B
+>SeenStartandWorld</B
+> <A HREF="Abstract.html#t%3AWALLorPLACE"
+>WALLorPLACE</A
+> <A HREF="Abstract.html#t%3ASEENSTARTandWORLD"
+>SEENSTARTandWORLD</A
+></TD
+><TD CLASS="rdoc"
+></TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3AWallorPlace2"
+></A
+><B
+>WallorPlace2</B
+> <A HREF="Abstract.html#t%3AWALLorPLACE"
+>WALLorPLACE</A
+></TD
+><TD CLASS="rdoc"
+></TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="section4"
+><IMG SRC="minus.gif" CLASS="coll" ONCLICK="toggle(this,'i:SEENSTARTandWORLD')" ALT="show/hide"
+> Instances</TD
+></TR
+><TR
+><TD CLASS="body"
+><DIV ID="i:SEENSTARTandWORLD" STYLE="display:block;"
+><TABLE CLASS="vanilla" CELLSPACING="1" CELLPADDING="0"
+><TR
+><TD CLASS="decl"
+>Eq <A HREF="Abstract.html#t%3ASEENSTARTandWORLD"
+>SEENSTARTandWORLD</A
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+>Show <A HREF="Abstract.html#t%3ASEENSTARTandWORLD"
+>SEENSTARTandWORLD</A
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="section2"
+><A NAME="6"
+>Coloca Paredes o Basura
+</A
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><SPAN CLASS="keyword"
+>data</SPAN
+> <A NAME="t%3AWALLorPLACE"
+></A
+><B
+>WALLorPLACE</B
+> </TD
+></TR
+><TR
+><TD CLASS="body"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD CLASS="ndoc"
+>El tipo de datos <TT
+>WALLorPLACE</TT
+> permite
+     colocar una pared o una basura. O una lista de
+     las mismas
+</TD
+></TR
+><TR
+><TD CLASS="section4"
+>Constructors</TD
+></TR
+><TR
+><TD CLASS="body"
+><TABLE CLASS="vanilla" CELLSPACING="1" CELLPADDING="0"
+><TR
+><TD CLASS="arg"
+><A NAME="v%3AWall"
+></A
+><B
+>Wall</B
+> <A HREF="Abstract.html#t%3ALISTAPARED"
+>LISTAPARED</A
+></TD
+><TD CLASS="rdoc"
+></TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3AGarbage"
+></A
+><B
+>Garbage</B
+> <A HREF="Abstract.html#t%3ALISTAGARBAGE"
+>LISTAGARBAGE</A
+></TD
+><TD CLASS="rdoc"
+></TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="section4"
+><IMG SRC="minus.gif" CLASS="coll" ONCLICK="toggle(this,'i:WALLorPLACE')" ALT="show/hide"
+> Instances</TD
+></TR
+><TR
+><TD CLASS="body"
+><DIV ID="i:WALLorPLACE" STYLE="display:block;"
+><TABLE CLASS="vanilla" CELLSPACING="1" CELLPADDING="0"
+><TR
+><TD CLASS="decl"
+>Eq <A HREF="Abstract.html#t%3AWALLorPLACE"
+>WALLorPLACE</A
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+>Show <A HREF="Abstract.html#t%3AWALLorPLACE"
+>WALLorPLACE</A
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="section2"
+><A NAME="7"
+>Representa la coordenada X del Mundo
+</A
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><SPAN CLASS="keyword"
+>data</SPAN
+> <A NAME="t%3AEJEX"
+></A
+><B
+>EJEX</B
+> </TD
+></TR
+><TR
+><TD CLASS="body"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD CLASS="ndoc"
+>El tipo de datos <TT
+>EJEX</TT
+> representa la coordenada X
+     de una ubicacion de mundo, pared, basura, Willy, etc
+</TD
+></TR
+><TR
+><TD CLASS="section4"
+>Constructors</TD
+></TR
+><TR
+><TD CLASS="body"
+><TABLE CLASS="vanilla" CELLSPACING="1" CELLPADDING="0"
+><TR
+><TD CLASS="arg"
+><A NAME="v%3AEjeX"
+></A
+><B
+>EjeX</B
+> Int</TD
+><TD CLASS="rdoc"
+></TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="section4"
+><IMG SRC="minus.gif" CLASS="coll" ONCLICK="toggle(this,'i:EJEX')" ALT="show/hide"
+> Instances</TD
+></TR
+><TR
+><TD CLASS="body"
+><DIV ID="i:EJEX" STYLE="display:block;"
+><TABLE CLASS="vanilla" CELLSPACING="1" CELLPADDING="0"
+><TR
+><TD CLASS="decl"
+>Eq <A HREF="Abstract.html#t%3AEJEX"
+>EJEX</A
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+>Show <A HREF="Abstract.html#t%3AEJEX"
+>EJEX</A
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="section2"
+><A NAME="8"
+>Representa la coordenada Y  del Mundo
+</A
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><SPAN CLASS="keyword"
+>data</SPAN
+> <A NAME="t%3AEJEY"
+></A
+><B
+>EJEY</B
+> </TD
+></TR
+><TR
+><TD CLASS="body"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD CLASS="ndoc"
+>El tipo de datos <TT
+>EJEY</TT
+> representa la coordenada Y
+     de una ubicacion de mundo, pared, basura, Willy, etc
+</TD
+></TR
+><TR
+><TD CLASS="section4"
+>Constructors</TD
+></TR
+><TR
+><TD CLASS="body"
+><TABLE CLASS="vanilla" CELLSPACING="1" CELLPADDING="0"
+><TR
+><TD CLASS="arg"
+><A NAME="v%3AEjeY"
+></A
+><B
+>EjeY</B
+> Int</TD
+><TD CLASS="rdoc"
+></TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="section4"
+><IMG SRC="minus.gif" CLASS="coll" ONCLICK="toggle(this,'i:EJEY')" ALT="show/hide"
+> Instances</TD
+></TR
+><TR
+><TD CLASS="body"
+><DIV ID="i:EJEY" STYLE="display:block;"
+><TABLE CLASS="vanilla" CELLSPACING="1" CELLPADDING="0"
+><TR
+><TD CLASS="decl"
+>Eq <A HREF="Abstract.html#t%3AEJEY"
+>EJEY</A
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+>Show <A HREF="Abstract.html#t%3AEJEY"
+>EJEY</A
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="section2"
+><A NAME="9"
+>Direccion en que es colocado Willy
+</A
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><SPAN CLASS="keyword"
+>data</SPAN
+> <A NAME="t%3ADIRECTION"
+></A
+><B
+>DIRECTION</B
+> </TD
+></TR
+><TR
+><TD CLASS="body"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD CLASS="ndoc"
+>El tipo de dato <TT
+>DIRECTION</TT
+> representa la direccion
+     de cualquier pared o del robot Willy dentro del Mundo
+</TD
+></TR
+><TR
+><TD CLASS="section4"
+>Constructors</TD
+></TR
+><TR
+><TD CLASS="body"
+><TABLE CLASS="vanilla" CELLSPACING="1" CELLPADDING="0"
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ANorth"
+></A
+><B
+>North</B
+></TD
+><TD CLASS="rdoc"
+></TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ASouth"
+></A
+><B
+>South</B
+></TD
+><TD CLASS="rdoc"
+></TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3AEast"
+></A
+><B
+>East</B
+></TD
+><TD CLASS="rdoc"
+></TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3AWest"
+></A
+><B
+>West</B
+></TD
+><TD CLASS="rdoc"
+></TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="section4"
+><IMG SRC="minus.gif" CLASS="coll" ONCLICK="toggle(this,'i:DIRECTION')" ALT="show/hide"
+> Instances</TD
+></TR
+><TR
+><TD CLASS="body"
+><DIV ID="i:DIRECTION" STYLE="display:block;"
+><TABLE CLASS="vanilla" CELLSPACING="1" CELLPADDING="0"
+><TR
+><TD CLASS="decl"
+>Eq <A HREF="Abstract.html#t%3ADIRECTION"
+>DIRECTION</A
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+>Show <A HREF="Abstract.html#t%3ADIRECTION"
+>DIRECTION</A
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="section2"
+><A NAME="10"
+>Pared colocada en el Mundo
+</A
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><SPAN CLASS="keyword"
+>data</SPAN
+> <A NAME="t%3APARED"
+></A
+><B
+>PARED</B
+> </TD
+></TR
+><TR
+><TD CLASS="body"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD CLASS="ndoc"
+>El tipo de dato <TT
+>PARED</TT
+> representa una pared colocada
+     en el mundo de Willy
+</TD
+></TR
+><TR
+><TD CLASS="section4"
+>Constructors</TD
+></TR
+><TR
+><TD CLASS="body"
+><TABLE CLASS="vanilla" CELLSPACING="1" CELLPADDING="0"
+><TR
+><TD CLASS="arg"
+><A NAME="v%3AWall1"
+></A
+><B
+>Wall1</B
+> <A HREF="Abstract.html#t%3ADIRECTION"
+>DIRECTION</A
+> <A HREF="Abstract.html#t%3AEJEX"
+>EJEX</A
+> <A HREF="Abstract.html#t%3AEJEY"
+>EJEY</A
+> <A HREF="Abstract.html#t%3AEJEX"
+>EJEX</A
+> <A HREF="Abstract.html#t%3AEJEY"
+>EJEY</A
+></TD
+><TD CLASS="rdoc"
+></TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="section4"
+><IMG SRC="minus.gif" CLASS="coll" ONCLICK="toggle(this,'i:PARED')" ALT="show/hide"
+> Instances</TD
+></TR
+><TR
+><TD CLASS="body"
+><DIV ID="i:PARED" STYLE="display:block;"
+><TABLE CLASS="vanilla" CELLSPACING="1" CELLPADDING="0"
+><TR
+><TD CLASS="decl"
+>Eq <A HREF="Abstract.html#t%3APARED"
+>PARED</A
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+>Show <A HREF="Abstract.html#t%3APARED"
+>PARED</A
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="section2"
+><A NAME="11"
+>Lista de Paredes colocadas en el Mundo
+</A
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><SPAN CLASS="keyword"
+>type</SPAN
+> <A NAME="t%3ALISTAPARED"
+></A
+><B
+>LISTAPARED</B
+> = [<A HREF="Abstract.html#t%3APARED"
+>PARED</A
+>]</TD
+></TR
+><TR
+><TD CLASS="doc"
+>El tipo de dato <TT
+>LISTAPARED</TT
+> representa una lista de
+     paredes dentro del mundo de Willy
+</TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="section2"
+><A NAME="12"
+>Basura colocada en el Mundo
+</A
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><SPAN CLASS="keyword"
+>data</SPAN
+> <A NAME="t%3AGARBAGE"
+></A
+><B
+>GARBAGE</B
+> </TD
+></TR
+><TR
+><TD CLASS="body"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD CLASS="ndoc"
+>El tipo de dato <TT
+>GARBAGE</TT
+> representa una basura colocada
+     en el mundo de Willy
+</TD
+></TR
+><TR
+><TD CLASS="section4"
+>Constructors</TD
+></TR
+><TR
+><TD CLASS="body"
+><TABLE CLASS="vanilla" CELLSPACING="1" CELLPADDING="0"
+><TR
+><TD CLASS="arg"
+><A NAME="v%3AGarbage1"
+></A
+><B
+>Garbage1</B
+> Int <A HREF="Abstract.html#t%3AEJEX"
+>EJEX</A
+> <A HREF="Abstract.html#t%3AEJEY"
+>EJEY</A
+></TD
+><TD CLASS="rdoc"
+></TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="section4"
+><IMG SRC="minus.gif" CLASS="coll" ONCLICK="toggle(this,'i:GARBAGE')" ALT="show/hide"
+> Instances</TD
+></TR
+><TR
+><TD CLASS="body"
+><DIV ID="i:GARBAGE" STYLE="display:block;"
+><TABLE CLASS="vanilla" CELLSPACING="1" CELLPADDING="0"
+><TR
+><TD CLASS="decl"
+>Eq <A HREF="Abstract.html#t%3AGARBAGE"
+>GARBAGE</A
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+>Show <A HREF="Abstract.html#t%3AGARBAGE"
+>GARBAGE</A
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="section2"
+><A NAME="13"
+>Lista de Basuras colocadas en el Mundo
+</A
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><SPAN CLASS="keyword"
+>type</SPAN
+> <A NAME="t%3ALISTAGARBAGE"
+></A
+><B
+>LISTAGARBAGE</B
+> = [<A HREF="Abstract.html#t%3AGARBAGE"
+>GARBAGE</A
+>]</TD
+></TR
+><TR
+><TD CLASS="doc"
+>El tipo de dato <TT
+>LISTAGARBAGE</TT
+> representa una lista de
+     basuras colcadas dentro del mundo de Willy
+</TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="section2"
+><A NAME="14"
+>Instruccion de Willy
+</A
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><SPAN CLASS="keyword"
+>data</SPAN
+> <A NAME="t%3AINSTRUCTION"
+></A
+><B
+>INSTRUCTION</B
+> </TD
+></TR
+><TR
+><TD CLASS="body"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD CLASS="ndoc"
+>El tipo de dato <TT
+>INSTRUCTION</TT
+> representa una Instruccion a
+     ejecutar por el robot Willy
+</TD
+></TR
+><TR
+><TD CLASS="section4"
+>Constructors</TD
+></TR
+><TR
+><TD CLASS="body"
+><TABLE CLASS="vanilla" CELLSPACING="1" CELLPADDING="0"
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ABegin"
+></A
+><B
+>Begin</B
+> <A HREF="Abstract.html#t%3ALISTAINSTRUCTION"
+>LISTAINSTRUCTION</A
+></TD
+><TD CLASS="rdoc"
+></TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ANoElse"
+></A
+><B
+>NoElse</B
+> <A HREF="Abstract.html#t%3AINSTIF"
+>INSTIF</A
+></TD
+><TD CLASS="rdoc"
+></TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3AElse"
+></A
+><B
+>Else</B
+> <A HREF="Abstract.html#t%3AINSTIF"
+>INSTIF</A
+> <A HREF="Abstract.html#t%3AINSTRUCTION"
+>INSTRUCTION</A
+></TD
+><TD CLASS="rdoc"
+></TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ARepeat"
+></A
+><B
+>Repeat</B
+> Int <A HREF="Abstract.html#t%3AINSTRUCTION"
+>INSTRUCTION</A
+></TD
+><TD CLASS="rdoc"
+></TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3AWhile"
+></A
+><B
+>While</B
+> <A HREF="Abstract.html#t%3ABOOL"
+>BOOL</A
+> <A HREF="Abstract.html#t%3AINSTRUCTION"
+>INSTRUCTION</A
+></TD
+><TD CLASS="rdoc"
+></TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3AMove"
+></A
+><B
+>Move</B
+></TD
+><TD CLASS="rdoc"
+></TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ATurnleft"
+></A
+><B
+>Turnleft</B
+></TD
+><TD CLASS="rdoc"
+></TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3APicktrash"
+></A
+><B
+>Picktrash</B
+></TD
+><TD CLASS="rdoc"
+></TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ADroptrash"
+></A
+><B
+>Droptrash</B
+></TD
+><TD CLASS="rdoc"
+></TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3AShutdown"
+></A
+><B
+>Shutdown</B
+></TD
+><TD CLASS="rdoc"
+></TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3AIdProc"
+></A
+><B
+>IdProc</B
+> String</TD
+><TD CLASS="rdoc"
+></TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="section4"
+><IMG SRC="minus.gif" CLASS="coll" ONCLICK="toggle(this,'i:INSTRUCTION')" ALT="show/hide"
+> Instances</TD
+></TR
+><TR
+><TD CLASS="body"
+><DIV ID="i:INSTRUCTION" STYLE="display:block;"
+><TABLE CLASS="vanilla" CELLSPACING="1" CELLPADDING="0"
+><TR
+><TD CLASS="decl"
+>Eq <A HREF="Abstract.html#t%3AINSTRUCTION"
+>INSTRUCTION</A
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+>Show <A HREF="Abstract.html#t%3AINSTRUCTION"
+>INSTRUCTION</A
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="section2"
+><A NAME="15"
+>Lista de Instrucciones de Willy
+</A
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><SPAN CLASS="keyword"
+>type</SPAN
+> <A NAME="t%3ALISTAINSTRUCTION"
+></A
+><B
+>LISTAINSTRUCTION</B
+> = [<A HREF="Abstract.html#t%3AINSTRUCTION"
+>INSTRUCTION</A
+>]</TD
+></TR
+><TR
+><TD CLASS="doc"
+>El tipo de dato <TT
+>LISTAINSTRUCTION</TT
+> representa una lista de
+     instrucciones del robot Willy
+</TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="section2"
+><A NAME="16"
+>Instrucciones en una sentencia  IF
+</A
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><SPAN CLASS="keyword"
+>data</SPAN
+> <A NAME="t%3AINSTIF"
+></A
+><B
+>INSTIF</B
+> </TD
+></TR
+><TR
+><TD CLASS="body"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD CLASS="ndoc"
+>El tipo de dato <TT
+>INSTIF</TT
+> representa una instruccion en una 
+     sentencia IF
+</TD
+></TR
+><TR
+><TD CLASS="section4"
+>Constructors</TD
+></TR
+><TR
+><TD CLASS="body"
+><TABLE CLASS="vanilla" CELLSPACING="1" CELLPADDING="0"
+><TR
+><TD CLASS="arg"
+><A NAME="v%3AIfThen"
+></A
+><B
+>IfThen</B
+> <A HREF="Abstract.html#t%3ABOOL"
+>BOOL</A
+> <A HREF="Abstract.html#t%3AINSTRUCTION"
+>INSTRUCTION</A
+></TD
+><TD CLASS="rdoc"
+></TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="section4"
+><IMG SRC="minus.gif" CLASS="coll" ONCLICK="toggle(this,'i:INSTIF')" ALT="show/hide"
+> Instances</TD
+></TR
+><TR
+><TD CLASS="body"
+><DIV ID="i:INSTIF" STYLE="display:block;"
+><TABLE CLASS="vanilla" CELLSPACING="1" CELLPADDING="0"
+><TR
+><TD CLASS="decl"
+>Eq <A HREF="Abstract.html#t%3AINSTIF"
+>INSTIF</A
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+>Show <A HREF="Abstract.html#t%3AINSTIF"
+>INSTIF</A
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="section2"
+><A NAME="17"
+>Booleano definido en el lenguaje
+</A
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><SPAN CLASS="keyword"
+>data</SPAN
+> <A NAME="t%3ABOOL"
+></A
+><B
+>BOOL</B
+> </TD
+></TR
+><TR
+><TD CLASS="body"
+><TABLE CLASS="vanilla" CELLSPACING="0" CELLPADDING="0"
+><TR
+><TD CLASS="ndoc"
+>El tipo de dato <TT
+>BOOL</TT
+> representa un booleano o una
+     verificacion dentro del lenguaje de Willy
+</TD
+></TR
+><TR
+><TD CLASS="section4"
+>Constructors</TD
+></TR
+><TR
+><TD CLASS="body"
+><TABLE CLASS="vanilla" CELLSPACING="1" CELLPADDING="0"
+><TR
+><TD CLASS="arg"
+><A NAME="v%3AOr"
+></A
+><B
+>Or</B
+> <A HREF="Abstract.html#t%3ABOOL"
+>BOOL</A
+> <A HREF="Abstract.html#t%3ABOOL"
+>BOOL</A
+></TD
+><TD CLASS="rdoc"
+></TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3AAnd"
+></A
+><B
+>And</B
+> <A HREF="Abstract.html#t%3ABOOL"
+>BOOL</A
+> <A HREF="Abstract.html#t%3ABOOL"
+>BOOL</A
+></TD
+><TD CLASS="rdoc"
+></TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ANot"
+></A
+><B
+>Not</B
+> <A HREF="Abstract.html#t%3ABOOL"
+>BOOL</A
+></TD
+><TD CLASS="rdoc"
+></TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3AFrontisclear"
+></A
+><B
+>Frontisclear</B
+></TD
+><TD CLASS="rdoc"
+></TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ALeftisclear"
+></A
+><B
+>Leftisclear</B
+></TD
+><TD CLASS="rdoc"
+></TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ARightisclear"
+></A
+><B
+>Rightisclear</B
+></TD
+><TD CLASS="rdoc"
+></TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ALookingnorth"
+></A
+><B
+>Lookingnorth</B
+></TD
+><TD CLASS="rdoc"
+></TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ALookingsouth"
+></A
+><B
+>Lookingsouth</B
+></TD
+><TD CLASS="rdoc"
+></TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ALookingeast"
+></A
+><B
+>Lookingeast</B
+></TD
+><TD CLASS="rdoc"
+></TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ALookingwest"
+></A
+><B
+>Lookingwest</B
+></TD
+><TD CLASS="rdoc"
+></TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3AFoundtrash"
+></A
+><B
+>Foundtrash</B
+></TD
+><TD CLASS="rdoc"
+></TD
+></TR
+><TR
+><TD CLASS="arg"
+><A NAME="v%3ACarryingtrash"
+></A
+><B
+>Carryingtrash</B
+></TD
+><TD CLASS="rdoc"
+></TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="section4"
+><IMG SRC="minus.gif" CLASS="coll" ONCLICK="toggle(this,'i:BOOL')" ALT="show/hide"
+> Instances</TD
+></TR
+><TR
+><TD CLASS="body"
+><DIV ID="i:BOOL" STYLE="display:block;"
+><TABLE CLASS="vanilla" CELLSPACING="1" CELLPADDING="0"
+><TR
+><TD CLASS="decl"
+>Eq <A HREF="Abstract.html#t%3ABOOL"
+>BOOL</A
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+>Show <A HREF="Abstract.html#t%3ABOOL"
+>BOOL</A
+></TD
+></TR
+></TABLE
+></DIV
+></TD
+></TR
+></TABLE
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="section2"
+><A NAME="18"
+>Tabla de Simbolos
+</A
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><SPAN CLASS="keyword"
+>type</SPAN
+> <A NAME="t%3AAbstract"
+></A
+><B
+>Abstract</B
+> = [(String, <A HREF="Abstract.html#t%3ASymbol"
+>Symbol</A
+>)]</TD
+></TR
+><TR
+><TD CLASS="doc"
+>El tipo de dato <TT
+>Abstract</TT
+> representa la tabla de simbolos
+     del analizador sintactico
+</TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="section2"
+><A NAME="19"
+>Tipo Symbol de la tabla de simbolos
+</A
+></TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="decl"
+><SPAN CLASS="keyword"
+>type</SPAN
+> <A NAME="t%3ASymbol"
+></A
+><B
+>Symbol</B
+> = (Maybe <A HREF="Abstract.html#t%3AWORLD"
+>WORLD</A
+>, Maybe <A HREF="Abstract.html#t%3AINSTRUCTION"
+>INSTRUCTION</A
+>)</TD
+></TR
+><TR
+><TD CLASS="doc"
+>El tipo de dato <TT
+>Symbol</TT
+> representa un simbolo dentro
+     de la tabla de simbolos
+</TD
+></TR
+><TR
+><TD CLASS="s15"
+></TD
+></TR
+><TR
+><TD CLASS="botbar"
+>Produced by <A HREF="http://www.haskell.org/haddock/"
+>Haddock</A
+> version 0.8</TD
+></TR
+></TABLE
+></BODY
+></HTML
+>
